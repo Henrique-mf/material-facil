@@ -10,7 +10,10 @@ Rails.application.routes.draw do
     collection do
       get "search"
     end
+    resources :carts, only: %i[new create]
   end
   resources :schools
   resources :lists
+  resources :carts, only: %i[show destroy edit update]
+  resources :orders
 end
