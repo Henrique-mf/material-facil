@@ -1,0 +1,19 @@
+<h1><%= @product.name %></h1>
+
+  <div class="card-product" >
+      <%= image_tag "product_placeholder.png", class: "product_image" %>
+    <div class="product-details">
+      <p><strong>Name:</strong> <%= @product.name %> </p>
+      <p><strong>Product Type:</strong> <%= @product.category_id %> </p>
+      <p><strong>Description:</strong> <%= @product.description %> </p>
+      <p><strong>Price: $ </strong> <%= @product.price %>
+    </div>
+  </div>
+
+      <%# add to cart %>
+      <p class="btn btn-primary">
+      <%# save for later %>
+      <p class="btn btn-primary">
+      <%# back %>
+      <p class="btn btn-primary">
+    </div>

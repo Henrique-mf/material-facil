@@ -1,0 +1,24 @@
+<%# <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('background.jpg') %>)"> %>
+  Placeholder
+<%# </div> %>
+
+<div class="cards">
+
+  <% @products.each do |product| %>
+    <div class="card-product">
+        <%= image_tag "product_placeholder.png", class: "product_image" %>
+      <div class="product-info">
+        <h2><%= product.name %></h2>
+        <p> US$ <%= product.price %>.00</p>
+        <p>Product type: <%= product.category_id %></p>
+        <p>Description: <%= product.description %></p>
+          <div class="details">
+            <%= link_to "View Details", product_path(product), class: "btn btn-primary" %>
+          </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<%# <div class="d-flex justify-content-center"> %>
+    <%# <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+<%# </div> %>
