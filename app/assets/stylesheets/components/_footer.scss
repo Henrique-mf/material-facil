@@ -1,0 +1,38 @@
+.footer {
+  background: #99cfd6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  max-height: 30vh; /* Ensure that the content takes at least the full viewport height. */
+  margin: 0;
+  padding: 50px;
+  color: #EBEBEB;
+  margin-top: auto;
+
+  main {
+    flex-grow: 1; /* Allow the main content to grow and push the footer down. */
+  }
+}
+
+.footer p {
+  color: #EBEBEB;
+}
+.footer-links {
+  color: #EBEBEB;
+  display: flex;
+  align-items: center;
+}
+.footer-links a {
+  color: #ebebeb;
+  opacity: 0.15;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+.footer-links a:hover {
+  opacity: 1;
+}
+.footer .fa-heart {
+  color: #D23333;
+}
