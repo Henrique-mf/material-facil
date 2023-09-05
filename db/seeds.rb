@@ -1,9 +1,9 @@
-School.destroy_all
-Grade.destroy_all
 List.destroy_all
-Product.destroy_all
-Category.destroy_all
+Grade.destroy_all
+School.destroy_all
 User.destroy_all
+Category.destroy_all
+Product.destroy_all
 
 puts 'Starting seed'
 
@@ -34,102 +34,24 @@ puts 'Starting seed'
   end
 end
 
-# products_names = [
-#   "Pens (Ballpoint, Gel, Rollerball)",
-#   "Pencils (Wooden, Mechanical)",
-#   "Notebooks (Spiral, Hardcover, Composition)",
-#   "Sticky Notes",
-#   "File Folders",
-#   "Binders (3-Ring, D-Ring)",
-#   "Paper Clips",
-#   "Staplers",
-#   "Staples (for Staplers)",
-#   "Scissors",
-#   "Tape (Scotch, Masking, Packing)",
-#   "Whiteboards",
-#   "Dry Erase Markers",
-#   "Calculator",
-#   "Desk Organizer",
-#   "Calendar (Wall, Desktop)",
-#   "Mouse Pad",
-#   "Desk Chair",
-#   "Desk Lamp",
-#   "Shredder",
-#   "Envelopes (Various Sizes)",
-#   "Highlighters",
-#   "Correction Tape/Pens",
-#   "Printer Paper",
-#   "Printer Ink Cartridges",
-#   "Postage Stamps",
-#   "Folders with Fasteners",
-#   "Paper Shredder",
-#   "Desk Calendar",
-#   "Push Pins",
-#   "Rubber Bands",
-#   "Name Badges",
-#   "Desk Phone",
-#   "Corkboard",
-#   "Drawer Organizers",
-#   "USB Flash Drive",
-#   "Label Maker",
-#   "Bulletin Board",
-#   "3-Hole Punch",
-#   "Desk Mat",
-#   "Hole Reinforcements",
-#   "Desk Clock",
-#   "Letter Opener",
-#   "Keyboard Wrist Rest",
-#   "Scanner",
-#   "Desk Supplies Set",
-#   "Desk Plant",
-#   "Desk Fan",
-#   "Desk Heater",
-#   "Desk Phone Stand",
-#   "Laptop Stand",
-#   "Desk Cable Organizer",
-#   "Desktop Computer",
-#   "Monitor",
-#   "External Hard Drive",
-#   "Desk Hutch",
-#   "Office Chair Mat",
-#   "Drawer Dividers",
-#   "Desk Mirror",
-#   "Wireless Mouse",
-#   "Desk Tray",
-#   "Desk Footrest",
-#   "Desk Treadmill",
-#   "Desk Exercise Equipment"
-# ]
-
-# grades_names.each do |grade|
-#   products_names.sample(rand(10..15)).each do |name|
-#     List.create!(
-#       name:,
-#       grade:,
-#       quantity: rand(1..5),
-#       school:
-#     )
-#     puts 'List created'
-#   end
-# puts 'creating categories and products'
-
-# 5.times do
-#   Category.create(
-#     name:
-#   )
-#   10.times do
-#     Product.create!(
-#       name:,
-#       price:,
-#       description:
-#     )
-#   end
-# end
-
-
-# puts 'category created'
+# Create 6 categories
+6.times do
+  category = Category.create!(
+    name: Faker::Commerce.unique.department(max: 1)
+  )
+  # Create products for each category
+  10.times do
+    product = Product.create!(
+      name: Faker::Commerce.product_name,
+      description: Faker::Lorem.sentence,
+      price: rand(10..50),
+      category:
+    )
+  end
+end
 
 puts 'generating users'
+
 user = User.create(
   email: 'test@gmail.com',
   password: '123123',

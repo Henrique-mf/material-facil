@@ -1,5 +1,6 @@
 class SchoolsController < ApplicationController
   before_action :set_school
+  skip_before_action :authenticate_user!
 
   def index
     @schools = School.all
