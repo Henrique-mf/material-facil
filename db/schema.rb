@@ -28,6 +28,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_05_151422) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_products_on_category_id"
+
+  create_table "lists", force: :cascade do |t|
+    t.string "grade"
+    t.string "name"
+    t.integer "quantity"
+    t.bigint "school_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_lists_on_school_id"
+  end
+
+  create_table "schools", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -42,5 +57,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_05_151422) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "products", "categories"
+
+  add_foreign_key "products", "categories", "lists", "schools"
 end
