@@ -1,6 +1,10 @@
 class CartsController < ApplicationController
   before_action :set_product, only: %i[new create]
 
+  def index
+    @carts = Cart.all
+  end
+
   def show
     @cart = Cart.find(params[:id])
   end
