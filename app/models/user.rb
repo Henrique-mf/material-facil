@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :phone, :address, presence: true
   has_one_attached :photo
+  has_many :orders
+  has_many :carts
+  has_many :products, through: :carts
 end
