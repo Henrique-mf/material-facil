@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :products do
     collection do
-      get "search"
+      get 'search'
     end
     resources :carts, only: %i[new create]
   end
