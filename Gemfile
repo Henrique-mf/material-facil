@@ -88,8 +88,9 @@ gem "pg_search"
 
 # gems for webscraping
 gem "nokogiri"
-gem "httparty"
 gem "csv"
 gem "json"
 gem "open-uri"
-gem "selenium-webdriver"
+
+#  gem for pagination
+gem 'pagy'
