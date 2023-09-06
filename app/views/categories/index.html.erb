@@ -1,12 +1,20 @@
-<%# <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('background.jpg') %>)"> %>
-<h1>Product Categories</h1>
+
+<%# <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('background.jpg') %>
+<div class="banner">
+  <img src="<%=>" alt="">
+   <h1>Product Categories</h1>
+</div>
+
 <%# </div> %>
 
 <div class="cards">
 
   <% @categories.each do |category| %>
-    <div class="card-product">
+    <h3><%= category.name %></h3>
+    <div class="card-product ">
+      <% category.products.each do |product| %>
         <%= image_tag "product_placeholder.png", class: "product_image" %>
+        <% end %>
     </div>
   <% end %>
 </div>
