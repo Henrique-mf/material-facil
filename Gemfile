@@ -82,3 +82,5 @@ gem "psych" , "~> 4.0.6"
 gem "cloudinary"
 gem 'faker'
 gem 'htmlbeautifier'
+
+gem "pg_search"
