@@ -305,6 +305,7 @@ DEPENDENCIES
   htmlbeautifier
   importmap-rails
   jbuilder
+  nokogiri
   pg (~> 1.1)
   pg_search
   psych (~> 4.0.6)

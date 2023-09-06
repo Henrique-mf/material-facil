@@ -84,3 +84,4 @@ gem 'faker'
 gem 'htmlbeautifier'
 
 gem "pg_search"
+gem "nokogiri"
