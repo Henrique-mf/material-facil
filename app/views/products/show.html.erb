@@ -14,7 +14,10 @@
         <div class="product-button">
           <%# add to cart  - fazer com simple form %>
           <%# <input class="btn btn-primary add-button" type="submit" value="Add to cart" name="commit"> %>
-          <a class="btn btn-primary add-button" href=>Add to cart</a>
+
+          <%= simple_form_for([@product, @cart]) do |f|%>
+            <%= f.button :submit, "Add to cart", class: "btn btn-primary add-button"  %>
+          <% end %>
 
           <%# buy now %>
           <a class="btn btn-primary buy-button" href=>Buy now</a>

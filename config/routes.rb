@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
   resources :schools
   resources :lists
-  resources :carts, only: %i[show destroy edit update]
+  resources :carts, only: %i[show destroy edit update index]
   resources :orders
   resources :grades
 end
