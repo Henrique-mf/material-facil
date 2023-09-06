@@ -2,7 +2,7 @@ class CartsController < ApplicationController
   before_action :set_product, only: %i[new create]
 
   def index
-    @carts = Cart.all
+    @carts = current_user.carts
   end
 
   def new
@@ -10,7 +10,8 @@ class CartsController < ApplicationController
   end
 
   def create
-    @cart = Cart.new(cart_params)
+    @cart = Cart.new
+    @cart.quantity = 1
     @cart.user = current_user
     @cart.product = @product
     if @cart.save
