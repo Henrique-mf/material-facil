@@ -1,5 +1,5 @@
 class SchoolsController < ApplicationController
-  before_action :set_school
+  # before_action :set_school
   skip_before_action :authenticate_user!
 
   def index
@@ -13,7 +13,7 @@ class SchoolsController < ApplicationController
   private
 
   def school_params
-    params.require(:school).permit(:name)
+    params.require(:school).permit(:name, :photo)
   end
 
   def set_school
