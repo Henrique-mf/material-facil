@@ -12,8 +12,13 @@
           <p><strong>Product Type:</strong> <%= @product.category_id %> </p>
         </div>
         <div class="product-button">
-          <%# add to cart %>
-          <a class="btn btn-primary add-button" href=>Add to cart</a>
+          <%# add to cart  - fazer com simple form %>
+          <%# <input class="btn btn-primary add-button" type="submit" value="Add to cart" name="commit"> %>
+
+          <%= simple_form_for([@product, @cart]) do |f|%>
+            <%= f.button :submit, "Add to cart", class: "btn btn-primary add-button"  %>
+          <% end %>
+
           <%# buy now %>
           <a class="btn btn-primary buy-button" href=>Buy now</a>
         </div>
