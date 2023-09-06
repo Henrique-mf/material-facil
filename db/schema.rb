@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2023_09_05_220232) do
+=======
+ActiveRecord::Schema[7.0].define(version: 2023_09_05_201218) do
+>>>>>>> master
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "carts", force: :cascade do |t|
+    t.string "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -35,6 +45,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_05_220232) do
     t.datetime "updated_at", null: false
     t.bigint "grade_id"
     t.index ["grade_id"], name: "index_lists_on_grade_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
