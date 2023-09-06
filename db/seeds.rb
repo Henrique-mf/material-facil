@@ -1,7 +1,7 @@
+User.destroy_all
 List.destroy_all
 Grade.destroy_all
 School.destroy_all
-User.destroy_all
 Product.destroy_all
 Category.destroy_all
 

@@ -1,0 +1,36 @@
+.product-container {
+  padding:0 42px;
+  background-color: #fff;
+}
+
+#product_image {
+  width: 330px;
+  height:100%;
+  object-fit: cover;
+  align-content: center;
+}
+
+.product-name {
+  position: relative;
+}
+
+.product-details {
+  position: relative;
+}
+
+.product-button {
+  position: relative;
+  align-content: center;
+}
+
+.add-button {
+  position: relative;
+}
+
+.buy-button {
+  position: relative;
+}
+
+.product-description {
+  position: relative;
+}
