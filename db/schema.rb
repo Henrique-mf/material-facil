@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema[7.0].define(version: 2023_09_05_220232) do
+=======
 ActiveRecord::Schema[7.0].define(version: 2023_09_05_201218) do
+>>>>>>> master
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,14 +30,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_05_201218) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "lists", force: :cascade do |t|
-    t.string "grade"
-    t.string "name"
-    t.integer "quantity"
+  create_table "grades", force: :cascade do |t|
     t.bigint "school_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["school_id"], name: "index_lists_on_school_id"
+    t.string "name"
+    t.index ["school_id"], name: "index_grades_on_school_id"
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.string "name"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "grade_id"
+    t.index ["grade_id"], name: "index_lists_on_grade_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -65,10 +76,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_05_201218) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.string "phone"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "lists", "schools"
+  add_foreign_key "grades", "schools"
+  add_foreign_key "lists", "grades"
   add_foreign_key "products", "categories"
 end

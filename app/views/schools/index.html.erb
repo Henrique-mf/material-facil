@@ -1,0 +1,18 @@
+
+<div class="cards">
+
+  <% @schools.each do |school| %>
+    <div class="card-product">
+      <% if school.photo.key? %>
+        <%= cl_image_tag school.photo.key, height: 300, width: 400, crop: :fill %>
+      <% else %>
+        <%= image_tag "placeholder.jpg", class: "product_image" %>
+      <% end %>
+      <div class="product-info">
+        <h2><%= school.name %></h2>
+          <%= link_to "View Details", school_path(school), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,5 +1,5 @@
 class School < ApplicationRecord
-  has_many :lists
+  has_many :grades
 
   validates :name, presence: true
 end
