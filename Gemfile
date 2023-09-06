@@ -83,7 +83,7 @@ gem "cloudinary"
 gem 'faker'
 gem 'htmlbeautifier'
 
-# gem for search function
+# gem for search
 gem "pg_search"
 
 # gems for webscraping

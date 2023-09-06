@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
-    @pagy, @products = pagy @products, items: params.fetch(:count, 10)
+    @pagy, @products = pagy(Product.all, items: params.fetch(:count, 10))
   end
 
   def show
