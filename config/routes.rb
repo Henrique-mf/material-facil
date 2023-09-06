@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   resources :lists
   resources :carts, only: %i[show destroy edit update]
   resources :orders
+  resources :grades
 end

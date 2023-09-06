@@ -2,8 +2,8 @@ List.destroy_all
 Grade.destroy_all
 School.destroy_all
 User.destroy_all
-Category.destroy_all
 Product.destroy_all
+Category.destroy_all
 
 puts 'Starting seed'
 
@@ -22,38 +22,102 @@ puts 'Starting seed'
     )
     puts "Grade created: #{grade.name}"
 
-    # Create lists for each grade
-    5.times do
-      List.create!(
-        name: "Material List for #{grade.name}",
-        grade: grade,
-        quantity: rand(1..5)
-      )
+    # Create lists for each grad
+      rand(10..15).times do
+        List.create!(
+          name: Faker::Commerce.product_name,
+          grade: grade,
+          quantity: rand(1..5)
+        )
+      end
+      puts "List created for #{grade.name}"
     end
-    puts "Lists created for #{grade.name}"
-  end
 end
 
 # Create 6 categories
-6.times do
-  category = Category.create!(
-    name: Faker::Commerce.unique.department(max: 1)
+
+category = Category.create!(
+  name: "Pen"
+)
+# Create products for each category
+10.times do
+  product = Product.create!(
+    name: Faker::Commerce.product_name,
+    description: Faker::Lorem.sentence,
+    price: rand(10..50),
+    category:
   )
-  # Create products for each category
-  10.times do
-    product = Product.create!(
-      name: Faker::Commerce.product_name,
-      description: Faker::Lorem.sentence,
-      price: rand(10..50),
-      category:
-    )
-  end
+end
+
+category = Category.create!(
+  name: "Notebook"
+)
+# Create products for each category
+10.times do
+  product = Product.create!(
+    name: Faker::Commerce.product_name,
+    description: Faker::Lorem.sentence,
+    price: rand(10..50),
+    category:
+  )
+end
+
+category = Category.create!(
+  name: "Eraser"
+)
+# Create products for each category
+10.times do
+  product = Product.create!(
+    name: Faker::Commerce.product_name,
+    description: Faker::Lorem.sentence,
+    price: rand(10..50),
+    category:
+  )
+end
+
+category = Category.create!(
+  name: "Ruler"
+)
+# Create products for each category
+10.times do
+  product = Product.create!(
+    name: Faker::Commerce.product_name,
+    description: Faker::Lorem.sentence,
+    price: rand(10..50),
+    category:
+  )
+end
+
+category = Category.create!(
+  name: "Glue"
+)
+# Create products for each category
+10.times do
+  product = Product.create!(
+    name: Faker::Commerce.product_name,
+    description: Faker::Lorem.sentence,
+    price: rand(10..50),
+    category:
+  )
+end
+
+category = Category.create!(
+  name: "Backpack"
+)
+# Create products for each category
+10.times do
+  product = Product.create!(
+    name: Faker::Commerce.product_name,
+    description: Faker::Lorem.sentence,
+    price: rand(10..50),
+    category:
+  )
 end
 
 puts 'generating users'
 
 user = User.create(
-  email: 'test@gmail.com',
+  email: 'admin@gmail.com',
   password: '123123',
   first_name: Faker::Name.name,
   last_name: Faker::Name.last_name,

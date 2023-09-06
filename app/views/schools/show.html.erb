@@ -1,10 +1,14 @@
-<div class="container">
-<% @schools.each do |list|%>
-   <div class="serie">
-    <h2><%=  %></h2>
-    <%= image_tag "image.jpg" %>
-    <p>Pode alegar sua vida</p>
-  </div>
-<% end %>
+<h1><%= @school.name %></h1>
 
+
+<div class="cards">
+  <% @school.grades.each do |grade| %>
+    <div class="card-product">
+      <%= image_tag "placeholder.jpg", class: "product_image" %>
+      <div class="product-info">
+        <h2><%= grade.name %></h2>
+          <%= link_to "View Details", grade_path(grade), class: "btn btn-primary" %>
+        </div>
+      </div>
+  <% end %>
 </div>
