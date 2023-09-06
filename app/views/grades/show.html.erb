@@ -1,0 +1,10 @@
+<%# a page that shows the grade name and the school it belongs to, and then shows the list that belongs to this grade and all the products that are included in this list %>
+<h1><%= @grade.name %></h1>
+<p>School: <%= @school.name %></p>
+
+
+<ul>
+  <% @grade.lists.each do |product| %>
+    <li><%= product.name %> - <%= product.quantity %>  </li>
+  <% end %>
+</ul>
