@@ -1,0 +1,21 @@
+<div class="cards">
+
+  <% @products.each do |product| %>
+    <div class="card-product">
+      <%# <% if product.photo.key? %>
+        <%# <%= cl_image_tag product.photo.key, height: 300, width: 400, crop: :fill %>
+      <%# <% else %>
+        <%# <%= image_tag "placeholder.jpg", class: "product_image" %>
+      <%# <% end %>
+      <div class="product-info">
+        <h2><%= product.name %></h2>
+        <h2><%= product.description %></h2>
+        <h1><%= product.price %></h2>
+
+        <%# falta botões de adicionar quantidade e remover produto do cart %>
+          <%# <%= link_to "View Details", product_path(product), class: "btn btn-primary" %> 
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -2,7 +2,7 @@ class CartsController < ApplicationController
   before_action :set_product, only: %i[new create]
 
   def index
-    @carts = Cart.all
+    @carts = current_user.Cart.all
   end
 
   def new
