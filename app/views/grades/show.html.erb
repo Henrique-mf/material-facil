@@ -5,6 +5,6 @@
 
 <ul>
   <% @grade.lists.each do |product| %>
-    <li><%= product.name %> - <%= product.quantity %>  </li>
+    <li><%= link_to product.name, search_products_path(search_term: product.name) %> - <%= product.quantity %></li>
   <% end %>
 </ul>
