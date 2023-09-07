@@ -13,7 +13,7 @@ class CartsController < ApplicationController
     @cart = Cart.find(params[:id])
     @cart.quantity +=1
     @cart.save
-    redirect_to carts_path, notice: "Product successfully added"
+    redirect_to request.referer, notice: "Product successfully added"
   end
 
   def remove_item
@@ -39,7 +39,11 @@ class CartsController < ApplicationController
     @cart = Cart.find(params[:id])
     # orderProduct.create
     @cart.destroy
-    redirect_to carts_path
+    if Cart.count.zero?
+      redirect_to root_path
+    else
+      redirect_to carts_path
+    end
   end
 
   def edit
