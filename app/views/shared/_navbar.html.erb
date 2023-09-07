@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid d-flex">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <i class="fa-solid fa-pencil fa-lg"></i>
+      <i class="fa-solid fa-pencil fa-lg" style="color: #343434;"></i>
     <% end %>
 
 
@@ -25,7 +25,7 @@
 
           <%= cart_total_quantity %>
             <%= link_to carts_path, class: "navbar-brand" do %>
-              <i class="fa-solid fa-cart-shopping fa-lg"></i>
+              <i class="fa-solid fa-cart-shopping fa-lg" style="color: #343434;"></i>
             <% end %>
 
     <div class="row justify-content-center">
@@ -37,7 +37,7 @@
                 placeholder: "Search for products..."
             %>
       <%= button_tag(type: 'submit', class: 'btn btn-primary') do %>
-        <i class="fas fa-search"></i>
+        <i class="fas fa-search" style="color: #343434;"></i>
       <% end %>
 
         <% end %>
@@ -45,12 +45,14 @@
     </div>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <%= link_to new_user_session_path, class: "nav-link" do %>
+              <i class="fa-solid fa-user fa-lg" style="color: #343434;"></i>
+            <% end %>
           </li>
 
           <%= cart_total_quantity %>
             <%= link_to carts_path, class: "navbar-brand" do %>
-              <i class="fa-solid fa-cart-shopping fa-lg"></i>
+              <i class="fa-solid fa-cart-shopping fa-lg style="color: #343434;""></i>
             <% end %>
 
               <div class="row justify-content-center">
@@ -62,7 +64,7 @@
                           placeholder: "Search for products..."
                       %>
                     <%= button_tag(type: 'submit', class: 'btn btn-primary') do %>
-                      <i class="fas fa-search"></i>
+                      <i class="fas fa-search" style="color: #343434;"></i>
                     <% end %>
                   <% end %>
       </div>
