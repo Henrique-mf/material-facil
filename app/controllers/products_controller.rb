@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :index, :show ]
+
   def index
     @pagy, @products = pagy(Product.all, items: params.fetch(:count, 10))
   end
@@ -20,6 +22,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :description, :photo)
+    params.require(:product).permit(:name, :description, :photo, :price)
   end
 end

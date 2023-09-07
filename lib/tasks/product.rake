@@ -15,23 +15,9 @@ namespace :product do
       # Remove "$" symbol, convert to float, multiply by 100, and round to integer
       price_in_cents = (price_str.delete("$").to_f * 100).round
 
-      #  ? image logic not working
-      # # Scrape the image URL directly from the HTML
-      # image_url_attr = product_info.css(".product.photo.product-item-photo").attr('data-src')
-
-      # # Check if the attribute exists before trying to access its value
-      # if image_url_attr
-      #   image_url = image_url_attr.value
-
-      #   # Make sure to handle missing images
-      #   next if image_url.nil?
-      # else
-      #   # Handle the case where the attribute is missing
-      #   # You can log a message or take appropriate action
-      #   # For example:
-      #   puts "Image URL attribute not found for product."
-      #   next
-      # end
+      image_url = product_info.css(".product-image-wrapper").children.attr('data-src').value
+      puts "got image url #{image_url}"
+      product_image = URI.open(image_url)
 
       # Extract the URL of the individual product page
       product_page_url = product_info.css(".product-item-link").attr('href').value
@@ -44,16 +30,14 @@ namespace :product do
       description = product_page_doc.css(".value").text.strip
 
       # Create a new Product object and associate it with the category
-      product = category.products.create!(
+      product = category.products.new(
         name: name,
         price: price_in_cents,
         description: description
       )
+      product.photo.attach(io: product_image, filename: 'nes.png', content_type: 'image/png')
+      product.save!
       puts 'producted created'
-      # ? image upload logic not working
-      # # Upload the image to Cloudinary and associate it with the 'photo' attribute
-      # product.photo.attach(io: URI.open(image_url), filename: "#{product.name.parameterize}-#{product.id}.jpg")
-      # product.save
     end
   end
 end
