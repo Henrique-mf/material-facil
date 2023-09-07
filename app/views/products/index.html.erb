@@ -1,20 +1,48 @@
-<div class="cards">
-  <% @products.each do |product| %>
-    <div class="card-product">
-      <div class="product-info">
-        <% if product.photo.key? %>
-          <%= cl_image_tag product.photo.key, height: 300, width: 400, crop: :fill %>
-        <% else %>
-          <%= image_tag "product_placeholder.png", class: "product_image" %>
-        <% end %>
-        <h2><%= product.name %></h2>
-        <h2><%= product.description %></h2>
-        <h1> $<%= product.price.to_f / 100 %></h2>
-        <%= link_to "View Details", product_path(product), class: "btn btn-primary" %>
+<div class="container">
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <!-- Product Card -->
+        <div class="card-product">
+          <!-- Product Image -->
+          <div class="product-image-container">
+            <% if product.photo.key? %>
+              <%= cl_image_tag product.photo.key, class: "product-image" %>
+            <% else %>
+              <%= image_tag "product_placeholder.png", class: "product-image" %>
+            <% end %>
+          </div>
+          <!-- Product Details -->
+          <div class="product-info">
+            <h2><%= product.name %></h2>
+            <h2><%= product.description %></h2>
+            <h1> $<%= product.price.to_f / 100 %></h1>
+            <%= link_to "View Details", product_path(product), class: "btn btn-primary" %>
+          </div>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
+
 <div class="d-flex justify-content-center">
-    <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+  <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
 </div>
+
+<style>
+  /* CSS for maintaining image aspect ratio */
+  .product-image-container {
+    position: relative;
+    padding-bottom: 100%; /* 1:1 Aspect Ratio (Square) */
+  }
+
+  .product-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Add additional styling and responsive design as needed */
+</style>
