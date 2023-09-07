@@ -13,6 +13,12 @@ class CategoriesController < ApplicationController
 
   private
 
+  def new
+  end
+
+  def edit
+  end
+
   def set_category
     @category = Category.find(params[:id])
   end
