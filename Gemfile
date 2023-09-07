@@ -83,13 +83,14 @@ gem "cloudinary"
 gem 'faker'
 gem 'htmlbeautifier'
 
-# gem for search function
+# gem for search
 gem "pg_search"
 
 # gems for webscraping
 gem "nokogiri"
-gem "httparty"
 gem "csv"
 gem "json"
 gem "open-uri"
-gem "selenium-webdriver"
+
+#  gem for pagination
+gem 'pagy'

@@ -49,7 +49,7 @@ namespace :product do
         price: price_in_cents,
         description: description
       )
-
+      puts 'producted created'
       # ? image upload logic not working
       # # Upload the image to Cloudinary and associate it with the 'photo' attribute
       # product.photo.attach(io: URI.open(image_url), filename: "#{product.name.parameterize}-#{product.id}.jpg")
