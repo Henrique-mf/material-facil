@@ -8,7 +8,7 @@ Category.destroy_all
 puts 'Starting seed'
 
 # Create schools
-10.times do
+5.times do
   school = School.create!(
     name: Faker::University.name
   )
@@ -45,7 +45,7 @@ user = User.create(
   address: Faker::Address.street_address
 )
 
-10.times do
+3.times do
   user = User.create(
     first_name: Faker::Name.name,
     last_name: Faker::Name.last_name,

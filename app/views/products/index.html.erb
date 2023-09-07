@@ -2,8 +2,14 @@
   <% @products.each do |product| %>
     <div class="card-product">
       <div class="product-info">
+        <% if product.photo.key? %>
+          <%= cl_image_tag product.photo.key, height: 300, width: 400, crop: :fill %>
+        <% else %>
+          <%= image_tag "product_placeholder.png", class: "product_image" %>
+        <% end %>
         <h2><%= product.name %></h2>
         <h2><%= product.description %></h2>
+        <h1> $<%= product.price.to_f / 100 %></h2>
         <%= link_to "View Details", product_path(product), class: "btn btn-primary" %>
       </div>
     </div>

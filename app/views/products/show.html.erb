@@ -5,7 +5,11 @@
         <div class="product-name">
           <h1><%= @product.name %></h1>
         </div>
+        <% if @product.photo.key? %>
+        <%= cl_image_tag @product.photo.key, height: 300, width: 400, crop: :fill %>
+      <% else %>
           <%= image_tag "product_placeholder.png", id: "product_image" %>
+      <% end %>
         <div class="product-details">
           <h1><strong>Price: $ </strong> <%= @product.price %>
           <p><strong>Name:</strong> <%= @product.name %> </p>
