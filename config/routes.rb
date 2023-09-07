@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   resources :carts, only: %i[show destroy edit update index]
   resources :orders
   resources :grades
+  patch 'carts/:id/add_item', to: 'carts#add_item', as: :cart_add_item
+  patch 'carts/:id/remove_item', to: 'carts#remove_item', as: :cart_remove_item
 end

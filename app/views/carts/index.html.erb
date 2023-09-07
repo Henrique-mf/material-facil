@@ -10,9 +10,34 @@
       <div class="product-info">
         <h2><%= cart.product.name %></h2>
         <h2><%= cart.product.description %></h2>
-        <h1><%= cart.product.price %></h2>
+        <h1>$<%= cart.product.price %></h1>
 
-        <i class="fa-regular fa-plus fa-lg"></i>
+
+
+        <% if cart.quantity > 0 %>
+          <%= link_to cart_remove_item_path(cart), data: {turbo_method: :patch}, class: "subtraction" do %>
+            <i class="fa-solid fa-minus fa-lg"></i>
+          <% end %>
+
+          <%= cart.quantity %>
+
+          <%= link_to cart_add_item_path(cart), data: {turbo_method: :patch}, class: "addition" do %>
+            <i class="fa-regular fa-plus fa-lg"></i>
+          <% end %>
+
+          <%= link_to cart_path(cart), data: {turbo_method: :delete}, class: "remove" do %>
+            <i class="fa-regular fa-trash-can fa-lg"></i>
+          <% end %>
+        <% else %>
+          <%= cart.quantity %>
+          <%= link_to cart_add_item_path(cart), data: {turbo_method: :patch}, class: "addition" do %>
+            <i class="fa-regular fa-plus fa-lg"></i>
+          <% end %>
+
+          <%= link_to cart_path(cart), data: {turbo_method: :delete}, class: "remove" do %>
+              <i class="fa-regular fa-trash-can fa-lg"></i>
+          <% end %>
+        <% end %>
 
         <%# falta botões de adicionar quantidade e remover produto do cart %>
           <%# <%= link_to "View Details", product_path(product), class: "btn btn-primary" %>

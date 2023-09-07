@@ -10,13 +10,15 @@
           <%= text_field_tag :search_term,
                 params[:search_term],
                 class: "form-control",
-                placeholder: "Search for products..."
-            %>
+                placeholder: "Search for products..." %>
           <%= submit_tag "Search", class: "btn btn-primary" %>
         <% end %>
-         <%= link_to carts_path, class: "navbar-brand" do %>
+
+      <%= cart_total_quantity %>
+
+        <%= link_to carts_path, class: "navbar-brand" do %>
          <i class="fa-solid fa-cart-shopping fa-lg"></i>
-         <% end %>
+        <% end %>
       </div>
     </div>
 

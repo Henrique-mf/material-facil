@@ -12,11 +12,14 @@
           <p><strong>Product Type:</strong> <%= @product.category_id %> </p>
         </div>
         <div class="product-button">
-          <%# add to cart  - fazer com simple form %>
-          <%# <input class="btn btn-primary add-button" type="submit" value="Add to cart" name="commit"> %>
 
-          <%= simple_form_for([@product, @cart]) do |f|%>
-            <%= f.button :submit, "Add to cart", class: "btn btn-primary add-button" %>
+          <% cart = Cart.find_by(user_id:current_user.id, product_id:@product.id) %>
+           <% if cart.present? %>
+            <%= link_to "Add to cart", cart_add_item_path(cart), data: {turbo_method: :patch}, class: "btn btn-primary add-button" %>
+           <% else %>
+            <%= simple_form_for([@product, @cart]) do |f|%>
+              <%= f.button :submit, "Add to cart", class: "btn btn-primary add-button" %>
+            <% end %>
           <% end %>
 
           <%# buy now %>
