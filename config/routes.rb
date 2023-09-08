@@ -7,6 +7,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  resources :carts do
+    collection do
+      get 'checkout' # Add a custom checkout route
+    end
+  end
+
+
   resources :categories
   resources :products do
     collection do

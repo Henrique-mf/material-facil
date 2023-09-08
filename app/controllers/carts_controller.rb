@@ -55,6 +55,23 @@ class CartsController < ApplicationController
     @cart.update(cart_params)
   end
 
+  def checkout
+    # Create a new order based on the user's current cart(s)
+    order = current_user.orders.create
+    current_user.carts.each do |cart|
+      order.order_products.create(product: cart.product, quantity: cart.quantity)
+    end
+
+    # Destroy the user's current cart(s) after creating the order
+    # current_user.carts.destroy_all
+
+    # Redirect to the orders#show view for the newly created order
+    redirect_to order
+  end
+
+  # ...
+
+
   private
 
   def set_cart
