@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
-    @pagy, @products = pagy(Product.all, items: params.fetch(:count, 10))
+    @pagy, @products = pagy(Product.all, items: params.fetch(:count, 12))
   end
 
   def show

@@ -51,11 +51,11 @@
 </script>
 
 <style>
-  /* CSS for Truncated Description */
   .product-description {
     max-height: 30px; /* Adjust the height as needed */
     overflow: hidden;
-    text-overflow: ellipsis;
+    /* text-overflow: ellipsis; */
+    width: 100%;
   }
 
   /* CSS for Expanded Description */
@@ -64,16 +64,13 @@
     overflow: visible;
   }
 
-  .product-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+.card-product {
+  height: 300px;
+  width: 300px;
+}
 
-  .product-image-container {
-    position: relative;
-    padding-bottom: 100%; /* 1:1 Aspect Ratio (Square) */
+.card-product .product-image {
+    height: 300px;
+    object-fit: cover;
   }
 </style>
