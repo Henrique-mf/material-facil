@@ -1,11 +1,7 @@
 <div class="cards">
-
-
       <!-- carts/index.html.erb -->
-
-        <h1>Your Cart</h1>
+  <h1>Your Cart</h1>
         <!-- Display cart contents here -->
-
   <% current_user.carts.each do |cart| %>
     <% ord_prod = OrderProduct.new(price: cart.product.price) %>
     <% ord_prod.order = @order%>
@@ -13,10 +9,5 @@
     <%= ord_prod %>
   <% end %>
 
-
-
-        <%= link_to 'Checkout', checkout_carts_path, class: 'btn btn-primary' %>
-        </div>
-      </div>
-    </div>
+  <%= link_to 'Checkout', checkout_carts_path, class: 'btn btn-primary' %>
 </div>

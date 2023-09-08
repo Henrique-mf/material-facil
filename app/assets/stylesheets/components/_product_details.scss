@@ -12,6 +12,8 @@
 
 .product-name {
   position: relative;
+  padding: 12px;
+  text-align: center;
 }
 
 .product-details {
@@ -20,7 +22,11 @@
 
 .product-button {
   position: relative;
+  text-align: center;
   align-content: center;
+  a {
+    width: 300px;
+  }
 }
 
 .add-button {
