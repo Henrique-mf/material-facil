@@ -1,5 +1,5 @@
 <div class="button-container">
-  <%= link_to "Schools", schools_path, class: "btn btn-info categories" %>
+  <%= link_to "Schools", schools_path, class: "btn btn-info product" %>
   <%= link_to "Products", products_path, class: "btn btn-info categories" %>
   <%= link_to "Categories", categories_path, class: "btn btn-info categories" %>
   <% @categories = Category.all %>
@@ -8,3 +8,38 @@
   <% end %>
 </div>
 <%= render "shared/carrousel" %>
+<% @categories.each do |category| %>
+  <h2><%= category.name %></h2>
+
+  <% products = category.products.limit(4) %>
+
+  <div class="row">
+    <% products.each do |product| %>
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <!-- Product Card -->
+        <div class="card-product">
+          <!-- Product Image -->
+          <div class="product-image-container">
+            <% if product.photo.key? %>
+              <%= cl_image_tag product.photo.key, class: "product-image" %>
+            <% else %>
+              <%= image_tag "product_placeholder.png", class: "product-image" %>
+            <% end %>
+          </div>
+          <!-- Product Details -->
+          <div class="product-info">
+            <h2><%= product.name %></h2>
+            <!-- Truncated Description -->
+            <div class="product-description">
+              <%= product.description %>
+            </div>
+            <!-- Read More Link -->
+            <a href="#" class="read-more-link">Read More</a>
+            <h1> $<%= product.price.to_f / 100 %></h1>
+            <%= link_to "View Details", product_path(product), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
