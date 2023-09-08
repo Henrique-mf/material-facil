@@ -1,3 +1,6 @@
+OrderProduct.destroy_all
+Cart.destroy_all
+Order.destroy_all
 User.destroy_all
 List.destroy_all
 Grade.destroy_all
@@ -18,14 +21,12 @@ puts 'Starting seed'
       name: "#{grade_number.ordinalize} Grade",
       school: school
     )
-    puts "Grade created: #{grade.name}"
         List.create!(
           name: Faker::Commerce.product_name,
           grade: grade,
           quantity: rand(1..5)
         )
       end
-      puts "List created for #{grade.name}"
     end
 
 puts 'generating users'
