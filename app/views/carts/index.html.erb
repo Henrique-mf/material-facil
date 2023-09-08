@@ -1,5 +1,8 @@
 <div class="cards">
-
+  <div class="checkout-div">
+    <h1>Your Cart</h1>
+    <%= link_to 'Checkout', checkout_carts_path, class: 'btn btn-primary' %>
+  </div>
   <% @carts.each do |cart| %>
     <div class="card-product">
       <%# <% if product.photo.key? %>
@@ -29,7 +32,9 @@
             <i class="fa-regular fa-trash-can fa-lg"></i>
           <% end %>
         <% else %>
+
           <%= cart.quantity %>
+          
           <%= link_to cart_add_item_path(cart), data: {turbo_method: :patch}, class: "addition" do %>
             <i class="fa-regular fa-plus fa-lg"></i>
           <% end %>
@@ -38,18 +43,6 @@
               <i class="fa-regular fa-trash-can fa-lg"></i>
           <% end %>
         <% end %>
-
-        <!-- carts/index.html.erb -->
-
-        <h1>Your Cart</h1>
-        <!-- Display cart contents here -->
-
-        <%= link_to 'Checkout', checkout_carts_path, class: 'btn btn-primary' %>
-
-
-        <%# falta botões de adicionar quantidade e remover produto do cart %>
-          <%# <%= link_to "View Details", product_path(product), class: "btn btn-primary" %>
-        </div>
       </div>
     </div>
   <% end %>

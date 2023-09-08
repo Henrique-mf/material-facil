@@ -1,15 +1,15 @@
-
+<div class="body">
   <div class="cards">
     <div>
       <div class="product-container">
         <div class="product-name">
           <h1><%= @product.name %></h1>
         </div>
-        <% if @product.photo.key? %>
-        <%= cl_image_tag @product.photo.key, height: 300, width: 400, crop: :fill %>
-      <% else %>
-          <%= image_tag "product_placeholder.png", id: "product_image" %>
-      <% end %>
+          <% if @product.photo.key? %>
+            <%= cl_image_tag @product.photo.key, height: 300, width: 400, crop: :fill %>
+          <% else %>
+            <%= image_tag "product_placeholder.png", id: "product_image" %>
+          <% end %>
         <div class="product-details">
           <h1><strong>Price: $ </strong> <%= @product.price %>
           <p><strong>Name:</strong> <%= @product.name %> </p>
@@ -17,17 +17,17 @@
         </div>
         <div class="product-button">
 
-          <% cart = Cart.find_by(user_id:current_user.id, product_id:@product.id) %>
-           <% if cart.present? %>
+            <% cart = Cart.find_by(user_id:current_user.id, product_id:@product.id) %>
+          <% if cart.present? %>
             <%= link_to "Add to cart", cart_add_item_path(cart), data: {turbo_method: :patch}, class: "btn btn-primary add-button" %>
-           <% else %>
+          <% else %>
             <%= simple_form_for([@product, @cart]) do |f|%>
               <%= f.button :submit, "Add to cart", class: "btn btn-primary add-button" %>
             <% end %>
           <% end %>
 
           <%# buy now %>
-           <%= link_to 'Buy now', checkout_carts_path, class: 'btn btn-primary' %>
+          <%= link_to 'Buy now', checkout_carts_path, class: 'btn btn-primary' %>
 
         </div>
         <div class="product-description">
@@ -36,3 +36,4 @@
       </div>
     </div>
   </div>
+</div>
