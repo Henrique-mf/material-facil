@@ -27,8 +27,8 @@
           <% end %>
 
           <%# buy now %>
-          <%= link_to "Buy now", orders_path(cart), data: {turbo_method: :get}, class: "btn btn-primary add-button" %>
-          
+           <%= link_to 'Buy now', checkout_carts_path, class: 'btn btn-primary' %>
+
         </div>
         <div class="product-description">
           <p><strong>Description:</strong> <%= @product.description %> </p>

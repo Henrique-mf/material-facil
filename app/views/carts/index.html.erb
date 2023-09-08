@@ -39,6 +39,14 @@
           <% end %>
         <% end %>
 
+        <!-- carts/index.html.erb -->
+
+        <h1>Your Cart</h1>
+        <!-- Display cart contents here -->
+
+        <%= link_to 'Checkout', checkout_carts_path, class: 'btn btn-primary' %>
+
+
         <%# falta botões de adicionar quantidade e remover produto do cart %>
           <%# <%= link_to "View Details", product_path(product), class: "btn btn-primary" %>
         </div>
