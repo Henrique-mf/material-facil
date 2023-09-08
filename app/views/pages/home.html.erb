@@ -2,12 +2,9 @@
   <%= link_to "Schools", schools_path, class: "btn btn-info categories" %>
   <%= link_to "Products", products_path, class: "btn btn-info categories" %>
   <%= link_to "Categories", categories_path, class: "btn btn-info categories" %>
-  <%= link_to "Categories", categories_path, class: "btn btn-info categories" %>
-  <%= link_to "Categories", categories_path, class: "btn btn-info categories" %>
-  <%= link_to "Categories", categories_path, class: "btn btn-info categories" %>
-  <%= link_to "Categories", categories_path, class: "btn btn-info categories" %>
-
+  <% @categories = Category.all %>
+  <% @categories.each do |category| %>
+    <%= link_to category.name, category_path(category), class: "btn btn-info categories" %>
+  <% end %>
 </div>
-
-
 <%= render "shared/carrousel" %>

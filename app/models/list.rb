@@ -1,4 +1,5 @@
 class List < ApplicationRecord
+  serialize :product_ids, Array
   belongs_to :grade
   has_many :products
 

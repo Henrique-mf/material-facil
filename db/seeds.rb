@@ -2,8 +2,6 @@ User.destroy_all
 List.destroy_all
 Grade.destroy_all
 School.destroy_all
-Product.destroy_all
-Category.destroy_all
 
 puts 'Starting seed'
 
@@ -21,9 +19,6 @@ puts 'Starting seed'
       school: school
     )
     puts "Grade created: #{grade.name}"
-
-    # Create lists for each grad
-      rand(10..15).times do
         List.create!(
           name: Faker::Commerce.product_name,
           grade: grade,
@@ -32,7 +27,6 @@ puts 'Starting seed'
       end
       puts "List created for #{grade.name}"
     end
-end
 
 puts 'generating users'
 
