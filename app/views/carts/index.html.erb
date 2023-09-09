@@ -13,7 +13,7 @@
       <div class="product-info">
         <h2><%= cart.product.name %></h2>
         <h2><%= cart.product.description %></h2>
-        <h1>$<%= cart.product.price %></h1>
+        <h1>$<%= cart.product.price.to_f / 100 %></h1>
 
 
 

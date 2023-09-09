@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid d-flex justify-content-between w-100">
       <%= link_to root_path, class: "navbar-brand" do %>
-      <i class="fa-solid fa-pencil fa-lg" style="color: #343434;"></i>
+      <%= image_tag 'ezmats.png', class: 'navbar-brand' %>
     <% end %>
       <ul class="navbar-nav">
         <% if user_signed_in? %>
