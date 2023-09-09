@@ -1,10 +1,11 @@
 <div class="container">
   <div class="row">
+
     <% @products.each do |product| %>
-      <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="col-m-4 col-sm-6 col-xs-12">
         <!-- Product Card -->
-        <div class="card-product">
-          <!-- Product Image -->
+          <div class="card-product">
+            <!-- Product Image -->
           <div class="product-image-container">
             <% if product.photo.key? %>
               <%= cl_image_tag product.photo.key, class: "product-image" %>
