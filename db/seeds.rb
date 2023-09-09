@@ -21,11 +21,12 @@ puts 'Starting seed'
       name: "#{grade_number.ordinalize} Grade",
       school: school
     )
-        List.create!(
+        10.times do List.create!(
           name: Faker::Commerce.product_name,
           grade: grade,
           quantity: rand(1..5)
         )
+      end
       end
     end
 

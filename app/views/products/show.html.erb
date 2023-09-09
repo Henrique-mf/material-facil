@@ -14,6 +14,9 @@
           <h1><strong>Price: $ </strong> <%= @product.price %>
           <p><strong>Name:</strong> <%= @product.name %> </p>
           <p><strong>Product Type:</strong> <%= @product.category_id %> </p>
+            <div class="product-description">
+              <p><strong>Description:</strong> <%= @product.description %> </p>
+            </div>
         </div>
         <div class="product-button">
 
@@ -30,9 +33,7 @@
           <%= link_to 'Buy now', checkout_carts_path, class: 'btn btn-primary' %>
 
         </div>
-        <div class="product-description">
-          <p><strong>Description:</strong> <%= @product.description %> </p>
-        </div>
+
       </div>
     </div>
   </div>
