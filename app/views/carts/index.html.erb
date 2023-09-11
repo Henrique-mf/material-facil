@@ -43,7 +43,11 @@
               <i class="fa-regular fa-trash-can fa-lg"></i>
           <% end %>
         <% end %>
+
       </div>
     </div>
   <% end %>
+    <%= link_to clear_cart_carts_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger" do %>
+        <p>Clear cart</p>
+    <% end %>
 </div>

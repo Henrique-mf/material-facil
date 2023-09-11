@@ -2,6 +2,7 @@ OrderProduct.destroy_all
 Cart.destroy_all
 Order.destroy_all
 User.destroy_all
+ListProduct.destroy_all
 List.destroy_all
 Grade.destroy_all
 School.destroy_all
@@ -10,7 +11,7 @@ puts 'Starting seed'
 
 # Create schools
 5.times do
-  school = School.create!(
+school = School.create!(
     name: Faker::University.name
   )
   puts "School created: #{school.name}"
@@ -21,14 +22,21 @@ puts 'Starting seed'
       name: "#{grade_number.ordinalize} Grade",
       school: school
     )
-        10.times do List.create!(
-          name: Faker::Commerce.product_name,
-          grade: grade,
+    list = List.create!(
+      name: "List for #{grade.name}, from #{school.name}",
+      grade: grade
+    )
+    Category.all.each do |category|
+      category.products.sample(rand(2..5)).each do |product|
+        ListProduct.create!(
+          list: list,
+          product: product,
           quantity: rand(1..5)
         )
       end
-      end
     end
+  end
+end
 
 puts 'generating users'
 

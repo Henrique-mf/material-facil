@@ -4,7 +4,9 @@
 
 
 <ul>
-  <% @grade.lists.each do |product| %>
-    <li><%= link_to product.name, search_products_path(search_term: product.name) %> - <%= product.quantity %></li>
+  <% @list.each do |item| %>
+    <li><%= link_to item.product.name, product_path(item.product) %> - <%= item.quantity %></li>
   <% end %>
 </ul>
+
+<%= link_to "Add List to cart", add_list_to_cart_path(@grade.list), data: { turbo_method: :patch } %>

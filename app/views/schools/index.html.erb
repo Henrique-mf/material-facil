@@ -1,15 +1,24 @@
 <div class="schools-name">
   <h1>Schools</h1>
 </div>
-<div class="cards">
-  <% @schools.each do |school| %>
-    <div class="card-product">
-        <%= image_tag "placeholder.jpg", class: "product_image" %>
-      <div class="product-info">
-        <h2><%= school.name %></h2>
-          <%= link_to "View Details", school_path(school), class: "btn-primary" %>
-        </div>
+
+<div class="container">
+  <div class="row">
+
+    <% @schools.each do |school| %>
+      <div class="col-m-4 col-sm-6 col-xs-12">
+        <!-- Product Card -->
+          <div class="card-product">
+            <!-- Product Image -->
+          <div class="product-image-container">
+              <%= image_tag("https://source.unsplash.com/random/?city,night",  class: "product_image float-left", alt: "City at night") %>
+          </div>
+          <!-- Product Details -->
+          <div class="product-info">
+            <h2><%= school.name %></h2>
+            <%= link_to "View Details", school_path(school), class: "btn-primary" %>
+          </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

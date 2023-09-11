@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_07_204830) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_11_143345) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -71,9 +71,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_07_204830) do
     t.index ["school_id"], name: "index_grades_on_school_id"
   end
 
+  create_table "list_products", force: :cascade do |t|
+    t.bigint "list_id", null: false
+    t.bigint "product_id", null: false
+    t.integer "quantity", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_id"], name: "index_list_products_on_list_id"
+    t.index ["product_id"], name: "index_list_products_on_product_id"
+  end
+
   create_table "lists", force: :cascade do |t|
     t.string "name"
-    t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "grade_id"
@@ -136,6 +145,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_07_204830) do
   add_foreign_key "carts", "products"
   add_foreign_key "carts", "users"
   add_foreign_key "grades", "schools"
+  add_foreign_key "list_products", "lists"
+  add_foreign_key "list_products", "products"
   add_foreign_key "lists", "grades"
   add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
