@@ -3,6 +3,11 @@
   background-color: #fff;
 }
 
+.product-container-checkout {
+  padding-left:5px;
+  background-color: #fff;
+}
+
 #product_image {
   width: 330px;
   height:100%;
@@ -10,14 +15,36 @@
   align-content: center;
 }
 
+.schools-name {
+  position: relative;
+  padding: 12px;
+  text-align: center;
+  margin-bottom: 2px;
+  background-color: #343434;
+  color: white;
+}
+
 .product-name {
   position: relative;
   padding: 12px;
   text-align: center;
+  margin-bottom: 2px;
+  background-color: #343434;
+  color: white;
+}
+
+.categories-name {
+  position: relative;
+  padding: 12px;
+  text-align: center;
+  margin-bottom: 2px;
+  background-color: #343434;
+  color: white;
 }
 
 .product-details {
   position: relative;
+  padding-left: 5px;
 }
 
 .product-button {
@@ -44,4 +71,16 @@
 
 .product-description {
   position: relative;
+}
+
+.back-to-cart-button {
+  position: relative;
+  text-align: center;
+  align-content: center;
+  display: inline-block;
+  padding-bottom: 8px;
+  a {
+    width: 300px;
+  }
+
 }

@@ -1,13 +1,37 @@
 <div class="cards">
-      <!-- carts/index.html.erb -->
-  <h1>Your Cart</h1>
-        <!-- Display cart contents here -->
-  <% current_user.carts.each do |cart| %>
-    <% ord_prod = OrderProduct.new(price: cart.product.price) %>
-    <% ord_prod.order = @order%>
-    <% ord_prod.product = cart.product %>
-    <%= ord_prod %>
-  <% end %>
-
-  <%= link_to 'Checkout', checkout_carts_path, class: 'btn btn-primary' %>
+  <!-- Display order products here -->
+    <div class="product-name">
+      <h1 class= "table-head"><strong>Your Order</strong></h1>
+    </div>
+  <div class="product-container-checkout">
+    <table>
+      <div class="product-details">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+            <!-- Add more headers as needed -->
+          </tr>
+        </thead>
+        <tbody>
+          <% subtotal = 0.0 %>
+          <% @order.order_products.each do |order_product| %>
+            <tr>
+              <td><%= order_product.product.name %></td>
+              <td><%= order_product.quantity %></td>
+              <td>$<%= order_product.product.price.to_f / 100 %></td>
+              <td>$<%= number_with_precision(order_product.quantity * order_product.product.price.to_f / 100 , precision: 2) %></td>
+              <!-- Add more cells for other product attributes -->
+            </tr>
+              <td><% subtotal += order_product.quantity * order_product.product.price.to_f / 100 %>
+          <% end %>
+              <td><strong>Total $ </strong><%= total = number_with_precision(subtotal, precision: 2) %>
+        </tbody>
+      </div>
+    </table>
+  </div>
+<div class="back-to-cart-button">
+  <%= link_to 'Back to Cart', carts_path, class: 'btn btn-primary' %>
 </div>
