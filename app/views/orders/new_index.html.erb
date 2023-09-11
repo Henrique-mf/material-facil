@@ -1,0 +1,37 @@
+<div class="cards">
+  <!-- Display order products here -->
+    <div class="product-name">
+      <h1 class= "table-head"><strong>Your Order</strong></h1>
+    </div>
+  <div class="product-container-checkout">
+    <table>
+      <div class="product-details">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+            <!-- Add more headers as needed -->
+          </tr>
+        </thead>
+        <tbody>
+          <% subtotal = 0.0 %>
+          <% @orders.each do |order| %>
+            <tr>
+              <td><%= order.product.name %></td>
+              <td><%= order.quantity %></td>
+              <td>$<%= order.product.price.to_f / 100 %></td>
+              <td>$<%= number_with_precision(order.quantity * order.product.price.to_f / 100 , precision: 2) %></td>
+              <!-- Add more cells for other product attributes -->
+            </tr>
+              <td><% subtotal += order.quantity * order.product.price.to_f / 100 %>
+          <% end %>
+              <td><strong>Total $ </strong><%= total = number_with_precision(subtotal, precision: 2) %>
+        </tbody>
+      </div>
+    </table>
+  </div>
+<div class="back-to-cart-button">
+  <%= link_to 'Back to Cart', carts_path, class: 'btn btn-primary' %>
+</div>

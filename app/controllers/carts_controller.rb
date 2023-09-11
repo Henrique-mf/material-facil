@@ -1,45 +1,35 @@
 class CartsController < ApplicationController
-  before_action :set_product, only: %i[new create]
+  before_action :set_cart, only: %i[show edit update destroy clear_cart checkout]
 
   def index
     @carts = current_user.carts.order(id: :desc)
+  end
+
+  def show
+    @cart = current_user.current_cart
   end
 
   def new
     @cart = Cart.new
   end
 
-  def add_item
-    @cart = Cart.find(params[:id])
-    @cart.quantity +=1
-    @cart.save
-    redirect_to request.referer, notice: "Product successfully added"
-  end
-
   def add_list_to_cart
     @list = List.find(params[:list_id])
+    cart = current_user.current_cart
+    if cart.nil?
+      cart = Cart.create(user: current_user)
+    end
     @list.list_products.each do |item|
-      cart = Cart.find_by(user_id: current_user.id, product_id: item.product.id)
-      if cart.nil?
-        cart = Cart.new
-        cart.quantity = item.quantity
-        cart.user = current_user
-        cart.product = item.product
-        cart.save
+      cart_item = CartItem.find_by(user: current_user, cart: cart, product: item.product)
+      if cart_item.nil?
+        CartItem.create(user: current_user, cart: cart, product: item.product, quantity: item.quantity)
       else
-        cart.quantity += item.quantity
-        cart.save
+        cart_item.update(quantity: cart_item.quantity + item.quantity)
       end
     end
-    redirect_to carts_path, notice: "List successfully added"
+    redirect_to cart_path(cart), notice: "List successfully added"
   end
 
-  def remove_item
-    @cart = Cart.find(params[:id])
-    @cart.quantity -=1
-    @cart.save
-    redirect_to carts_path, notice: "Product successfully removed"
-  end
 
   def create
     @cart = Cart.new
@@ -65,35 +55,31 @@ class CartsController < ApplicationController
   end
 
   def clear_cart
-    current_user.carts.destroy_all
-    redirect_to carts_path, notice: "Cart successfully cleared"
+    @cart.cart_items.destroy_all
+    redirect_to @cart, notice: "Cart successfully cleared"
   end
 
   def edit
-    @cart = Cart.find(params[:id])
   end
 
   def update
-    @cart = Cart.find(params[:id])
     @cart.update(cart_params)
   end
 
   def checkout
+
+    @cart_items = @cart.cart_items.includes(:product)
     # Create a new order based on the user's current cart(s)
-    order = current_user.orders.create
-    current_user.carts.each do |cart|
-      order.order_products.create(product: cart.product, quantity: cart.quantity)
-    end
+    # current_user.carts.each do |cart|
+    #   Order.create(product: cart.product, quantity: cart.quantity, user: current_user)
+    # end
 
-    # Destroy the user's current cart(s) after creating the order
-    # current_user.carts.destroy_all
+    # # Destroy the user's current cart(s) after creating the order
+    # # current_user.carts.destroy_all
 
-    # Redirect to the orders#show view for the newly created order
-    redirect_to order
+    # # Redirect to the orders#show view for the newly created order
+    # redirect_to order
   end
-
-  # ...
-
 
   private
 

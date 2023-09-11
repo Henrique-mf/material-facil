@@ -161,6 +161,15 @@ GEM
     mime-types-data (3.2023.0808)
     mini_mime (1.1.5)
     minitest (5.19.0)
+    monetize (1.12.0)
+      money (~> 6.12)
+    money (6.16.0)
+      i18n (>= 0.6.4, <= 2)
+    money-rails (1.15.0)
+      activesupport (>= 3.0)
+      monetize (~> 1.9)
+      money (~> 6.13)
+      railties (>= 3.0)
     msgpack (1.7.2)
     net-imap (0.3.7)
       date
@@ -263,6 +272,7 @@ GEM
     stimulus-rails (1.2.2)
       railties (>= 6.0.0)
     stringio (3.0.8)
+    stripe (8.7.0)
     thor (1.2.2)
     tilt (2.2.0)
     time (0.2.2)
@@ -317,6 +327,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   json
+  money-rails
   nokogiri
   open-uri
   pagy
@@ -330,6 +341,7 @@ DEPENDENCIES
   simple_form!
   sprockets-rails
   stimulus-rails
+  stripe
   turbo-rails
   tzinfo-data
   web-console

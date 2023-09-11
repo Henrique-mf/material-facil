@@ -5,7 +5,7 @@
   <%# top horizontal menu %>
   <% @categories = Category.all %>
   <% @categories.each do |category| %>
-    <%= link_to category.name, category_path(category), class: "btn btn-info categories" %>
+  <%= link_to category.name, category_path(category), class: "btn btn-info categories" %>
   <% end %>
 </div>
 <%= render "shared/carrousel" %>
@@ -36,7 +36,7 @@
             </div>
             <!-- Read More Link -->
             <a href="#" class="read-more-link">Read More</a>
-            <h1> $<%= product.price.to_f / 100 %></h1>
+            <h1> <%= humanized_money_with_symbol(product.price) %></h1>
             <%= link_to "View Details", product_path(product), class: "btn btn-primary" %>
           </div>
         </div>

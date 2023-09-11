@@ -1,0 +1,52 @@
+<div class="cards">
+  <div class="card-space-div">
+    <h1>Your Cart</h1>
+    <%= link_to 'Checkout', checkout_cart_path(@cart), class: 'btn btn-primary' %>
+  </div>
+  <% @cart.cart_items.each do |cart_item| %>
+    <div class="card-product">
+      <%# <% if product.photo.key? %>
+        <%# <%= cl_image_tag product.photo.key, height: 300, width: 400, crop: :fill %>
+      <%# <% else %>
+        <%# <%= image_tag "placeholder.jpg", class: "product_image" %>
+      <%# <% end %>
+      <div class="product-info">
+        <h2><%= cart_item.product.name %></h2>
+        <h2><%= cart_item.product.description %></h2>
+        <h1><%= humanized_money_with_symbol(cart_item.total * 100) %></h1>
+
+        <% if cart_item.quantity > 0 %>
+          <%= link_to remove_quantity_cart_item_path(cart_item), data: {turbo_method: :patch}, class: "subtraction" do %>
+            <i class="fa-solid fa-minus fa-lg"></i>
+          <% end %>
+
+          <%= cart_item.quantity %>
+
+          <%= link_to add_quantity_cart_item_path(cart_item), data: {turbo_method: :patch}, class: "addition" do %>
+            <i class="fa-regular fa-plus fa-lg"></i>
+          <% end %>
+
+          <%= link_to cart_item_path(cart_item), data: {turbo_method: :delete}, class: "remove" do %>
+            <i class="fa-regular fa-trash-can fa-lg"></i>
+          <% end %>
+        <% else %>
+
+          <%= cart_item.quantity %>
+
+          <%= link_to add_quantity_cart_item_path(cart_item), data: {turbo_method: :patch}, class: "addition" do %>
+            <i class="fa-regular fa-plus fa-lg"></i>
+          <% end %>
+
+          <%= link_to cart_item_path(cart_item), data: {turbo_method: :delete}, class: "remove" do %>
+              <i class="fa-regular fa-trash-can fa-lg"></i>
+          <% end %>
+        <% end %>
+
+      </div>
+    </div>
+  <% end %>
+
+  <div class="card-space-clear">
+    <%= link_to 'Clear cart', clear_cart_cart_path(@cart), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary-clearcart"%>
+  </div>
+</div>
