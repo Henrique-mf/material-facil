@@ -1,7 +1,7 @@
 <div class="product-name">
   <h1>Products</h1>
 </div>
-<div class="container">
+<div class="">
   <div class="row">
 
     <% @products.each do |product| %>
@@ -61,16 +61,24 @@
     /* text-overflow: ellipsis; */
     width: 100%;
   }
+    .read-more-link {
+
+      text-decoration: none;
+    }
 
   /* CSS for Expanded Description */
   .product-description.expanded {
     max-height: none;
     overflow: visible;
+    margin: 0;
+    a {
+      text-decoration: none;
+    }
   }
 
 .card-product {
-  height: 300px;
-  width: 300px;
+  height: 188px;
+  width: 410px;
 }
 
 .card-product .product-image {

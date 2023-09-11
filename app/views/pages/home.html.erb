@@ -2,6 +2,7 @@
   <%= link_to "Schools", schools_path, class: "btn btn-info product" %>
   <%# <%= link_to "Products", products_path, class: "btn btn-info categories" %>
   <%= link_to "Categories", categories_path, class: "btn btn-info categories" %>
+  <%# top horizontal menu %>
   <% @categories = Category.all %>
   <% @categories.each do |category| %>
     <%= link_to category.name, category_path(category), class: "btn btn-info categories" %>
@@ -10,10 +11,12 @@
 <%= render "shared/carrousel" %>
 <% @categories.each do |category| %>
   <% unless category.name == "Pen" %>
+    <div class="sub-categories-name">
     <%= link_to category.name, category_path(category) %>
+    </div>
     <% @products = category.products.limit(4) %>
     <% @products.each do |product| %>
-      <div class="col-md-4 col-sm-6 col-xs-12">
+      <%# <div class="col-md-4 col-sm-6 col-xs-12"> %>
         <!-- Product Card -->
         <div class="card-product">
           <!-- Product Image -->
@@ -37,7 +40,7 @@
             <%= link_to "View Details", product_path(product), class: "btn btn-primary" %>
           </div>
         </div>
-      </div>
+      <%# </div> %>
     <% end %>
   <% end %>
 <% end %>
