@@ -1,0 +1,49 @@
+<div class="cards">
+  <div class="card-space-div">
+    <h1>Your Order</h1>
+    <%= link_to 'Payment', checkout_carts_path, class: 'btn btn-primary' %>
+  </div>
+  <% @orders.each do |order| %>
+    <div class="card-product">
+      <%# <% if product.photo.key? %>
+        <%# <%= cl_image_tag product.photo.key, height: 300, width: 400, crop: :fill %>
+      <%# <% else %>
+        <%# <%= image_tag "placeholder.jpg", class: "product_image" %>
+      <%# <% end %>
+      <div class="product-info">
+        <h2><%= cart.product.name %></h2>
+        <h2><%= cart.product.description %></h2>
+        <h1>$<%= cart.product.price.to_f / 100 %></h1>
+
+
+
+        <% if cart.quantity > 0 %>
+          <%= link_to cart_remove_item_path(cart), data: {turbo_method: :patch}, class: "subtraction" do %>
+            <i class="fa-solid fa-minus fa-lg"></i>
+          <% end %>
+
+          <%= cart.quantity %>
+
+          <%= link_to cart_add_item_path(cart), data: {turbo_method: :patch}, class: "addition" do %>
+            <i class="fa-regular fa-plus fa-lg"></i>
+          <% end %>
+
+          <%= link_to cart_path(cart), data: {turbo_method: :delete}, class: "remove" do %>
+            <i class="fa-regular fa-trash-can fa-lg"></i>
+          <% end %>
+        <% else %>
+
+          <%= cart.quantity %>
+
+          <%= link_to cart_add_item_path(cart), data: {turbo_method: :patch}, class: "addition" do %>
+            <i class="fa-regular fa-plus fa-lg"></i>
+          <% end %>
+
+          <%= link_to cart_path(cart), data: {turbo_method: :delete}, class: "remove" do %>
+              <i class="fa-regular fa-trash-can fa-lg"></i>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
