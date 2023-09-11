@@ -1,6 +1,5 @@
 
 .card-product {
-  overflow: hidden;
   padding: 10px;
   background: white;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
@@ -49,6 +48,23 @@
   h1 {
     color:aliceblue;
     margin: 0;
+  }
+
+  a {
+    width: 300px;
+  }
+}
+
+.card-space-clear {
+  text-align: center;
+  padding-bottom: 12px;
+  // background-color: #343434;
+
+
+  h1 {
+    color:aliceblue;
+    margin: 0;
+    font-weight: bold;
   }
 
   a {
