@@ -80,9 +80,8 @@ class CartsController < ApplicationController
 
   def checkout
     # Create a new order based on the user's current cart(s)
-    order = current_user.orders.create
     current_user.carts.each do |cart|
-      order.order_products.create(product: cart.product, quantity: cart.quantity)
+      Order.create(product: cart.product, quantity: cart.quantity, user: current_user)
     end
 
     # Destroy the user's current cart(s) after creating the order

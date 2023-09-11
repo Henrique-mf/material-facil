@@ -1,4 +1,4 @@
-OrderProduct.destroy_all
+CartItem.destroy_all
 Cart.destroy_all
 Order.destroy_all
 User.destroy_all
@@ -6,9 +6,78 @@ ListProduct.destroy_all
 List.destroy_all
 Grade.destroy_all
 School.destroy_all
+Product.destroy_all
+Category.destroy_all
+
 
 puts 'Starting seed'
 
+puts 'generating users'
+
+user = User.create(
+  email: 'admin@gmail.com',
+  password: '123123',
+  first_name: Faker::Name.name,
+  last_name: Faker::Name.last_name,
+  phone: Faker::PhoneNumber.cell_phone,
+  address: Faker::Address.street_address
+)
+
+3.times do
+  user = User.create(
+    first_name: Faker::Name.name,
+    last_name: Faker::Name.last_name,
+    phone: Faker::PhoneNumber.cell_phone,
+    email: Faker::Internet.email,
+    address: Faker::Address.street_address
+  )
+  puts 'user generated'
+end
+
+scrape_data = [{
+  url: 'https://www.papersource.com/desk/writing-instruments/pens', category: 'Pens'
+  }
+]
+
+scrape_data.each do |data|
+  html_file = URI.open(data[:url]).read
+  html_doc = Nokogiri::HTML(html_file)
+
+  # Find or create a 'pen' category
+  category = Category.find_or_create_by(name: data[:category])
+
+  html_doc.css(".product-item-info").each do |product_info|
+    name = product_info.css(".product-item-link").text.strip
+    price_str = product_info.css(".price").text.strip
+
+    # Remove "$" symbol, convert to float, multiply by 100, and round to integer
+    price_in_cents = (price_str.delete("$").to_f * 100).round
+
+    image_url = product_info.css(".product-image-wrapper").children.attr('data-src').value
+    puts "got image url #{image_url}"
+    product_image = URI.open(image_url)
+
+    # Extract the URL of the individual product page
+    product_page_url = product_info.css(".product-item-link").attr('href').value
+
+    # Make an HTTP request to the individual product page
+    product_page_html = URI.open(product_page_url).read
+    product_page_doc = Nokogiri::HTML(product_page_html)
+
+    # Scrape the product description from the product page
+    description = product_page_doc.css(".value").text.strip
+
+    # Create a new Product object and associate it with the category
+    product = category.products.new(
+      name: name,
+      price: price_in_cents,
+      description: description
+    )
+    product.photo.attach(io: product_image, filename: 'nes.png', content_type: 'image/png')
+    product.save!
+    puts 'product created'
+  end
+end
 # Create schools
 5.times do
 school = School.create!(
@@ -38,26 +107,5 @@ school = School.create!(
   end
 end
 
-puts 'generating users'
-
-user = User.create(
-  email: 'admin@gmail.com',
-  password: '123123',
-  first_name: Faker::Name.name,
-  last_name: Faker::Name.last_name,
-  phone: Faker::PhoneNumber.cell_phone,
-  address: Faker::Address.street_address
-)
-
-3.times do
-  user = User.create(
-    first_name: Faker::Name.name,
-    last_name: Faker::Name.last_name,
-    phone: Faker::PhoneNumber.cell_phone,
-    email: Faker::Internet.email,
-    address: Faker::Address.street_address
-  )
-  puts 'user generated'
-end
 
 puts 'seed succesfull'

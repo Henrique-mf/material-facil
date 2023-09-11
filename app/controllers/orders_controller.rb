@@ -3,6 +3,11 @@ class OrdersController < ApplicationController
     @orders = Order.all
   end
 
+  def new_index
+    @orders = Order.where(user: current_user)
+  end
+
+
   def show
     @order = Order.find(params[:id])
   end
@@ -10,6 +15,7 @@ class OrdersController < ApplicationController
   def new
     @order = order.new
   end
+
 
   def create
     @order = Order.new

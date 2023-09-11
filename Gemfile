@@ -94,3 +94,7 @@ gem "open-uri"
 
 #  gem for pagination
 gem 'pagy'
+
+# stripe
+gem 'money-rails'
+gem 'stripe'

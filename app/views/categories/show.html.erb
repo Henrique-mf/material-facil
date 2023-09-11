@@ -25,7 +25,8 @@
             </div>
             <!-- Read More Link -->
             <a href="#" class="read-more-link">Read More</a>
-            <h1> $<%= product.price.to_f / 100 %></h1>
+            <h1> $<%= number_with_precision(product.price.to_f / 100, precision: 2) %></h1>
+            <%= humanized_money_with_symbol(product.price) %>
             <%= link_to "View Details", product_path(product), class: "btn btn-primary" %>
           </div>
         </div>

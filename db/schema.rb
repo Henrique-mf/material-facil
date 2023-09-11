@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_11_143345) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_11_200534) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,13 +42,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_143345) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "carts", force: :cascade do |t|
-    t.integer "quantity"
+  create_table "cart_items", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "cart_id", null: false
+    t.integer "quantity", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "product_id", null: false
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+    t.index ["product_id"], name: "index_cart_items_on_product_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.index ["product_id"], name: "index_carts_on_product_id"
+    t.datetime "closed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
@@ -58,16 +66,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_143345) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "checkouts", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "grades", force: :cascade do |t|
     t.bigint "school_id", null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
     t.index ["school_id"], name: "index_grades_on_school_id"
   end
 
@@ -83,32 +86,27 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_143345) do
 
   create_table "lists", force: :cascade do |t|
     t.string "name"
+    t.bigint "grade_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "grade_id"
     t.index ["grade_id"], name: "index_lists_on_grade_id"
   end
 
-  create_table "order_products", force: :cascade do |t|
-    t.bigint "order_id", null: false
-    t.bigint "product_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "price"
-    t.integer "quantity"
-    t.index ["order_id"], name: "index_order_products_on_order_id"
-    t.index ["product_id"], name: "index_order_products_on_product_id"
-  end
-
   create_table "orders", force: :cascade do |t|
+    t.integer "amount_cents", default: 0, null: false
+    t.string "checkout_session_id"
+    t.string "state"
+    t.bigint "cart_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
+    t.index ["cart_id"], name: "index_orders_on_cart_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
-    t.integer "price"
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "USD", null: false
     t.string "name"
     t.string "description"
     t.bigint "category_id", null: false
@@ -142,14 +140,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_143345) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "carts", "products"
+  add_foreign_key "cart_items", "carts"
+  add_foreign_key "cart_items", "products"
   add_foreign_key "carts", "users"
   add_foreign_key "grades", "schools"
   add_foreign_key "list_products", "lists"
   add_foreign_key "list_products", "products"
   add_foreign_key "lists", "grades"
-  add_foreign_key "order_products", "orders"
-  add_foreign_key "order_products", "products"
+  add_foreign_key "orders", "carts"
   add_foreign_key "orders", "users"
   add_foreign_key "products", "categories"
 end

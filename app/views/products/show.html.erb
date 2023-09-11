@@ -11,7 +11,7 @@
             <%= image_tag "product_placeholder.png", id: "product_image" %>
           <% end %>
         <div class="product-details">
-          <h1><strong>Price: $ </strong> <%= @product.price %>
+          <h1><strong>Price: </strong> <%= humanized_money_with_symbol(@product.price) %>
           <p><strong>Name:</strong> <%= @product.name %> </p>
           <p><strong>Product Type:</strong> <%= @product.category_id %> </p>
             <div class="product-description">

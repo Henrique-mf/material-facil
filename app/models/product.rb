@@ -14,9 +14,10 @@ class Product < ApplicationRecord
     }
 
   belongs_to :category
-  has_many :order_products
+  has_many :orders
 
   validates :name, presence: true
   validates :description, presence: true
   has_one_attached :photo
+  monetize :price_cents, as: :price
 end
