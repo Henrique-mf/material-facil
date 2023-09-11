@@ -48,7 +48,7 @@
     </div>
   <% end %>
 
-  <div class="card-space-div">
-    <%= link_to 'clear cart', clear_cart_carts_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger"%>
+  <div class="card-space-clear">
+    <%= link_to 'Clear cart', clear_cart_carts_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary-clearcart"%>
   </div>
 </div>

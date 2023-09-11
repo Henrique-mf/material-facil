@@ -1,22 +1,22 @@
-<div class="body">
+<%# <div class="body"> %>
   <div class="cards">
-    <div>
-      <div class="product-container">
         <div class="product-name">
           <h1><%= @product.name %></h1>
         </div>
+    <div class="card-product">
+      <div class="product-container">
           <% if @product.photo.key? %>
             <%= cl_image_tag @product.photo.key, height: 300, width: 400, crop: :fill %>
           <% else %>
             <%= image_tag "product_placeholder.png", id: "product_image" %>
           <% end %>
         <div class="product-details">
-          <h1><strong>Price: $ </strong> <%= @product.price %>
-          <p><strong>Name:</strong> <%= @product.name %> </p>
-          <p><strong>Product Type:</strong> <%= @product.category_id %> </p>
-            <div class="product-description">
-              <p><strong>Description:</strong> <%= @product.description %> </p>
-            </div>
+            <h1><strong>Price: $ </strong> <%= @product.price %>
+            <p><strong>Name:</strong> <%= @product.name %> </p>
+            <p><strong>Product Type:</strong> <%= @product.category_id %> </p>
+          <div class="product-description">
+            <p><strong>Description:</strong> <%= @product.description %> </p>
+          </div>
         </div>
         <div class="product-button">
 
@@ -37,4 +37,4 @@
       </div>
     </div>
   </div>
-</div>
+<%# </div> %>

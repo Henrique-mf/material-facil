@@ -17,7 +17,7 @@
 
 .schools-name {
   position: relative;
-  padding: 12px;
+  padding: 10px;
   text-align: center;
   margin-bottom: 2px;
   background-color: #343434;
@@ -26,7 +26,7 @@
 
 .product-name {
   position: relative;
-  padding: 12px;
+  padding: 10px;
   text-align: center;
   margin-bottom: 2px;
   background-color: #343434;
@@ -35,7 +35,7 @@
 
 .categories-name {
   position: relative;
-  padding: 12px;
+  padding: 10px;
   text-align: center;
   margin-bottom: 2px;
   background-color: #343434;
@@ -44,7 +44,7 @@
 
 .sub-categories-name {
   position: relative;
-  padding: 12px;
+  padding: 8px;
   text-align: center;
   text-decoration: none;
   margin-bottom: 0;
@@ -58,12 +58,12 @@
 
 .sub-categories-title {
   position: relative;
-  padding: 12px;
+  padding: 10px;
   text-align: center;
   text-decoration: none;
   margin-bottom: 0;
-  background-color: #dcdcda;
-  color: #343434;
+  background-color: #343434;
+  color: #f0ad42;
   a {
     text-decoration: none;
     color: #f0ad42;
@@ -101,13 +101,7 @@
   position: relative;
 }
 
-.back-to-cart-button {
-  position: relative;
-  text-align: center;
-  align-content: center;
-  display: inline-block;
-  padding-bottom: 8px;
-  a {
-    width: 300px;
-  }
+.read-more-link {
+
+  text-decoration: none;
 }

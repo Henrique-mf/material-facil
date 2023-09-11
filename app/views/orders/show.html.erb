@@ -3,35 +3,54 @@
     <div class="product-name">
       <h1 class= "table-head"><strong>Your Order</strong></h1>
     </div>
-  <div class="product-container-checkout">
+  <div class="product-container-checkout pe-2">
     <table>
+
       <div class="product-details">
-        <thead>
-          <tr>
-            <th>Product Name</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Subtotal</th>
-            <!-- Add more headers as needed -->
-          </tr>
-        </thead>
-        <tbody>
-          <% subtotal = 0.0 %>
-          <% @order.order_products.each do |order_product| %>
-            <tr>
-              <td><%= order_product.product.name %></td>
-              <td><%= order_product.quantity %></td>
-              <td>$<%= order_product.product.price.to_f / 100 %></td>
-              <td>$<%= number_with_precision(order_product.quantity * order_product.product.price.to_f / 100 , precision: 2) %></td>
-              <!-- Add more cells for other product attributes -->
-            </tr>
-              <td><% subtotal += order_product.quantity * order_product.product.price.to_f / 100 %>
-          <% end %>
-              <td><strong>Total $ </strong><%= total = number_with_precision(subtotal, precision: 2) %>
-        </tbody>
+        <% subtotal = 0.0 %>
+        <div class="row">
+          <div class="col-4">
+            <strong>Product Name</strong>
+          </div>
+          <div class="col-2 d-flex justify-content-start">
+            <strong>Quantity</strong>
+          </div>
+          <div class="col-3 d-flex justify-content-end">
+            <strong>Price</strong>
+          </div>
+          <div class="col-3 d-flex justify-content-end">
+            <strong>Subtotal</strong>
+          </div>
+        </div>
       </div>
+
+      <% @order.order_products.each do |order_product| %>
+        <div class="row">
+          <div class="col-4">
+            <%= order_product.product.name %>
+          </div>
+          <div class="col-2 d-flex justify-content-end">
+            <%= order_product.quantity %>
+          </div>
+          <div class="col-3 d-flex justify-content-end">
+            $<%= order_product.product.price.to_f / 100 %>
+          </div>
+          <div class="col-3 d-flex justify-content-end">
+            $<%= number_with_precision(order_product.quantity * order_product.product.price.to_f / 100 , precision: 2) %>
+          </div>
+        </div>
+              <% subtotal += order_product.quantity * order_product.product.price.to_f / 100 %>
+      <% end %>
+
+        <div class="row">
+          <div class="col-12 d-flex justify-content-end">
+            <strong>Total $ <%=total = number_with_precision(subtotal, precision: 2) %></strong>
+          </div>
+        </div>
+
     </table>
   </div>
-<div class="back-to-cart-button">
-  <%= link_to 'Back to Cart', carts_path, class: 'btn btn-primary' %>
+  <div class="back-to-cart-button">
+    <%= link_to 'Back to Cart', carts_path, class: 'btn btn-primary' %>
+  </div>
 </div>
