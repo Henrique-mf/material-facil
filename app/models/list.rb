@@ -1,8 +1,7 @@
 class List < ApplicationRecord
-  serialize :product_ids, Array
   belongs_to :grade
-  has_many :products
+  has_many :list_products, dependent: :destroy
+  has_many :products, through: :list_products
 
   validates :name, presence: true
-  validates :quantity, presence: true
 end

@@ -16,6 +16,24 @@ class CartsController < ApplicationController
     redirect_to request.referer, notice: "Product successfully added"
   end
 
+  def add_list_to_cart
+    @list = List.find(params[:list_id])
+    @list.list_products.each do |item|
+      cart = Cart.find_by(user_id: current_user.id, product_id: item.product.id)
+      if cart.nil?
+        cart = Cart.new
+        cart.quantity = item.quantity
+        cart.user = current_user
+        cart.product = item.product
+        cart.save
+      else
+        cart.quantity += item.quantity
+        cart.save
+      end
+    end
+    redirect_to carts_path, notice: "List successfully added"
+  end
+
   def remove_item
     @cart = Cart.find(params[:id])
     @cart.quantity -=1
@@ -44,6 +62,11 @@ class CartsController < ApplicationController
     else
       redirect_to carts_path
     end
+  end
+
+  def clear_cart
+    current_user.carts.destroy_all
+    redirect_to carts_path, notice: "Cart successfully cleared"
   end
 
   def edit
