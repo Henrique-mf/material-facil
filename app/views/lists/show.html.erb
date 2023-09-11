@@ -1,12 +1,12 @@
 <%# a page that shows the grade name and the school it belongs to, and then shows the list that belongs to this grade and all the products that are included in this list %>
-<h1><%= @grade.name %></h1>
-<p>School: <%= @school.name %></p>
+<h1><%= @list.grade.name %></h1>
+<p>School: <%= @list.school.name %></p>
 
 
 <ul>
-  <% @list.each do |item| %>
+  <% @list_items.each do |item| %>
     <li><%= link_to item.product.name, product_path(item.product) %> - <%= item.quantity %></li>
   <% end %>
 </ul>
 
-<%= link_to "Add List to cart", add_list_to_cart_path(@grade.list), data: { turbo_method: :patch } %>
+<%= link_to "Add List to cart", add_list_to_cart_path(@list), data: { turbo_method: :patch } %>

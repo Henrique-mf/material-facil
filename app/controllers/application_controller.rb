@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   def cart_total_quantity
     if current_user
-      current_user.carts.sum(:quantity)
+      current_user.current_cart.quantity
     else
       0
     end

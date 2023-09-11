@@ -8,6 +8,7 @@ class SchoolsController < ApplicationController
 
   def show
     @school = School.find(params[:id])
+    @grades = @school.grades.includes(:list)
   end
 
   private

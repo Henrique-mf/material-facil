@@ -3,14 +3,13 @@
 </div>
 
 <div class="cards">
-  <% @school.grades.each do |grade| %>
+  <% @grades.each do |grade| %>
     <div class="card-product">
       <%= image_tag "placeholder.jpg", class: "product_image" %>
       <div class="product-info">
         <h2><%= grade.name %></h2>
-          <%= link_to "View Details", grade_path(grade), class: "btn btn-primary" %>
+          <%= link_to "View Details", list_path(grade.list), class: "btn btn-primary" %>
         </div>
       </div>
   <% end %>
 </div>
-

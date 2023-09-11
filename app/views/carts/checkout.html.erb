@@ -24,33 +24,33 @@
         </div>
       </div>
 
-      <% @order.order_products.each do |order_product| %>
+      <% @cart_items.each do |item| %>
         <div class="row">
           <div class="col-4">
-            <%= order_product.product.name %>
+            <%= item.product.name %>
           </div>
           <div class="col-2 d-flex justify-content-end">
-            <%= order_product.quantity %>
+            <%= item.quantity %>
           </div>
           <div class="col-3 d-flex justify-content-end">
-            $<%= order_product.product.price.to_f %>
+            $<%= item.product.price.to_f %>
           </div>
           <div class="col-3 d-flex justify-content-end">
-            <%= humanized_money_with_symbol(@product.price) %>
+            <%= humanized_money_with_symbol(item.total * 100) %>
           </div>
         </div>
-              <% subtotal += order_product.quantity * order_product.product.price.to_f %>
+              <% subtotal += item.quantity * item.product.price.to_f %>
       <% end %>
 
         <div class="row">
           <div class="col-12 d-flex justify-content-end">
-            <strong><%= humanized_money_with_symbol(subtotal) %> %></strong>
+            <strong> <%= humanized_money_with_symbol(subtotal) %></strong>
           </div>
         </div>
 
     </table>
   </div>
   <div class="back-to-cart-button">
-    <%= link_to 'Back to Cart', carts_path, class: 'btn btn-primary' %>
+    <%= link_to 'Back to Cart', cart_path(@cart), class: 'btn btn-primary' %>
   </div>
 </div>
