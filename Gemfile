@@ -98,6 +98,7 @@ gem 'pagy'
 # stripe
 gem 'money-rails'
 gem 'stripe'
+gem 'stripe_event'
 
 
 # rails admin
