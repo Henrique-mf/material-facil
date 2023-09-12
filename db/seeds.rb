@@ -35,10 +35,10 @@ user = User.create(
 end
 
 scrape_data = [
-  { url: 'https://www.papersource.com/desk/writing-instruments/pens', category: 'Pens' }
-  # { url: 'https://www.papersource.com/craft/paper-bar/paper', category: 'Paper' },
-  # { url: 'https://www.papersource.com/craft/paper-bar/envelopes', category: 'Envelopes' },
-  # { url: 'https://www.papersource.com/craft/tools/tape' category: 'Tape' },
+  { url: 'https://www.papersource.com/desk/writing-instruments/pens', category: 'Pens' },
+  { url: 'https://www.papersource.com/craft/paper-bar/paper', category: 'Paper' },
+  { url: 'https://www.papersource.com/craft/paper-bar/envelopes', category: 'Envelopes' },
+  { url: 'https://www.papersource.com/craft/tools/tape', category: 'Tape' }
 ]
 
 scrape_data.each do |data|

@@ -4,12 +4,14 @@ class CartItemsController < ApplicationController
   def add_quantity
     @cart_item.quantity += 1
     @cart_item.save
+    @cart_item.cart.update(total_price: @cart_item.cart.total_price += @cart_item.product.price_cents)
     redirect_to @cart_item, notice: "Product successfully added"
   end
 
   def remove_quantity
     @cart_item.quantity -= 1
     @cart_item.save
+    @cart_item.cart.update(total_price: @cart_item.cart.total_price -= @cart_item.product.price_cents)
     redirect_to @cart, notice: "Product successfully removed"
   end
 
@@ -21,6 +23,11 @@ class CartItemsController < ApplicationController
       CartItem.create(user: current_user, cart: @cart, product: @product, quantity: 1)
     else
       @cart_item.update(quantity: @cart_item.quantity + 1)
+    end
+    if @cart.total_price?
+      @cart.update(total_price: @cart.total_price += @product.price_cents)
+    else
+      @cart.update(total_price: @product.price_cents)
     end
     redirect_to @product, notice: "Product successfully added"
   end
