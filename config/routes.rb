@@ -46,4 +46,6 @@ Rails.application.routes.draw do
   patch 'carts/add_list_to_cart/:list_id', to: 'carts#add_list_to_cart', as: :add_list_to_cart
   patch 'carts/:id/add_item', to: 'carts#add_item', as: :cart_add_item
   patch 'carts/:id/remove_item', to: 'carts#remove_item', as: :cart_remove_item
+
+  mount StripeEvent::Engine, at: '/stripe-webhooks'
 end

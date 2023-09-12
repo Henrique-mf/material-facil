@@ -1,56 +1,15 @@
 <div class="cards">
-  <!-- Display order products here -->
-    <div class="product-name">
-      <h1 class= "table-head"><strong>Your Order</strong></h1>
-    </div>
-  <div class="product-container-checkout pe-2">
-    <table>
-
-      <div class="product-details">
-        <% subtotal = 0.0 %>
-        <div class="row">
-          <div class="col-4">
-            <strong>Product Name</strong>
-          </div>
-          <div class="col-2 d-flex justify-content-start">
-            <strong>Quantity</strong>
-          </div>
-          <div class="col-3 d-flex justify-content-end">
-            <strong>Price</strong>
-          </div>
-          <div class="col-3 d-flex justify-content-end">
-            <strong>Subtotal</strong>
-          </div>
-        </div>
-      </div>
-
-      <% @order.order_products.each do |order_product| %>
-        <div class="row">
-          <div class="col-4">
-            <%= order_product.product.name %>
-          </div>
-          <div class="col-2 d-flex justify-content-end">
-            <%= order_product.quantity %>
-          </div>
-          <div class="col-3 d-flex justify-content-end">
-            $<%= order_product.product.price.to_f %>
-          </div>
-          <div class="col-3 d-flex justify-content-end">
-            <%= humanized_money_with_symbol(@product.price) %>
-          </div>
-        </div>
-              <% subtotal += order_product.quantity * order_product.product.price.to_f %>
-      <% end %>
-
-        <div class="row">
-          <div class="col-12 d-flex justify-content-end">
-            <strong><%= humanized_money_with_symbol(subtotal) %> %></strong>
-          </div>
-        </div>
-
-    </table>
+  <div class="product-name">
+    <h1> Order #<%= @order.id %> Summary:</h1>
   </div>
-  <div class="back-to-cart-button">
-    <%= link_to 'Back to Cart', carts_path, class: 'btn btn-primary' %>
+  <div class="card-product">
+    <div class="product-container">
+      <div class="product-details">
+        <p><strong>Status: </strong> <%= @order.state %> </p>
+        <p><strong>Issued on: </strong> <%= @order.created_at.to_date %> </p>
+        <p><strong>Amount paid:</strong> <%= humanized_money_with_symbol(@order.amount_cents / 100) %> </p>
+        <p><strong>Expected delivery date:</strong> within 2 business days</p>
+        <p><strong>Products:</strong></p>
+    </div>
   </div>
 </div>

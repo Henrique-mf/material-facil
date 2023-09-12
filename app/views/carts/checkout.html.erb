@@ -1,7 +1,7 @@
 <div class="cards">
   <!-- Display order products here -->
     <div class="product-name">
-      <h1 class= "table-head"><strong>Your Order</strong></h1>
+      <h1 class= "table-head"><strong>Review Your Order</strong></h1>
     </div>
   <div class="product-container-checkout pe-2">
     <table>
@@ -33,7 +33,7 @@
             <%= item.quantity %>
           </div>
           <div class="col-3 d-flex justify-content-end">
-            $<%= item.product.price.to_f %>
+            <%= humanized_money_with_symbol(item.product.price) %>
           </div>
           <div class="col-3 d-flex justify-content-end">
             <%= humanized_money_with_symbol(item.total * 100) %>
@@ -44,7 +44,7 @@
 
       <div class="row">
           <div class="col-12 d-flex justify-content-end">
-            <strong> <%= humanized_money_with_symbol(subtotal) %></strong>
+            <strong> Total: <%= humanized_money_with_symbol(subtotal) %></strong>
           </div>
         </div>
 
@@ -55,7 +55,7 @@
     <%# <%= link_to 'Finish order', new_order_payment_path(), class: 'btn btn-primary' %>
     <%= form_tag orders_path do %>
       <%= hidden_field_tag 'cart_id', @cart.id %>
-      <%= submit_tag 'Finish order', class:"btn btn-primary" %>
+      <%= submit_tag 'Go to payment', class:"btn btn-primary" %>
     <% end %>
   </div>
 </div>

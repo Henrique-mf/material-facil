@@ -9,7 +9,7 @@ class Product < ApplicationRecord
     using: {
       tsearch: {
         any_word: true,
-        dictionary: 'english'
+      dictionary: 'english'
       }
     }
 
