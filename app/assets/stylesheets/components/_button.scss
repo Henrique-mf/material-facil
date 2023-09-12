@@ -62,6 +62,10 @@
   }
 }
 
+.w-300 {
+  width: 300px;
+}
+
 .back-to-categories {
   position: relative;
   text-align: center;
@@ -79,3 +83,60 @@
 //   background-color: #d83f3f;
 //   color: white;
 //   font-weight: bold;
+
+
+.product-button {
+  position: relative;
+  text-align: center;
+  align-content: center;
+  a {
+    width: 300px;
+  }
+}
+
+.add-to-cart-school-button {
+  position: relative;
+  text-align: center;
+  align-content: center;
+  margin-bottom: 10px;
+  a {
+    width: 300px;
+  }
+}
+
+
+.add-button {
+  position: relative;
+  text-align: center;
+  align-content: center;
+  a {
+    width: 300px;
+  }
+}
+
+.buy-button {
+  position: relative;
+}
+
+.final-payment-button {
+  position: relative;
+  text-align: center;
+  align-content: center;
+  margin-bottom: 10px;
+  a {
+    width: 300px;
+  }
+}
+
+.pay-button {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  align-content: center;
+  margin-bottom: 10px;
+  width: 300px;
+  a {
+    width: 300px;
+  }
+}

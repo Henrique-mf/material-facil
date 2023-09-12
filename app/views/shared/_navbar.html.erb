@@ -15,7 +15,8 @@
             <% if current_user.photo.key? %>
               <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", width: 40, height: 40, crop: "fill", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, 'aria-label': "Toggle navigation" %>
             <% else %>
-              <%= image_tag "meerkat.webp", class: "avatar dropdown-toggle py-1", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <%# <%= image_tag "meerkat.webp", class: "avatar dropdown-toggle py-1", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <i class="fa-solid fa-user fa-lg avatar dropdown-toggle py-1" style="color: #343434;" data-bs-toggle="dropdown" aria-haspopup=true aria-expanded=false id="navbarDropdown"></i>
             <% end %>
             <div class="dropdown-menu dropdown-menu-end position-absolute" aria-labelledby="navbarDropdown">
               <%= link_to "My Profile", profile_path, class: "dropdown-item" %>

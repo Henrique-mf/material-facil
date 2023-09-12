@@ -64,6 +64,7 @@
   margin-bottom: 0;
   background-color: #343434;
   color: #f0ad42;
+  max-height: 85px;
   a {
     text-decoration: none;
     color: #f0ad42;
@@ -75,27 +76,7 @@
   padding-left: 5px;
 }
 
-.product-button {
-  position: relative;
-  text-align: center;
-  align-content: center;
-  a {
-    width: 300px;
-  }
-}
 
-.add-button {
-  position: relative;
-  text-align: center;
-  align-content: center;
-  a {
-    width: 300px;
-  }
-}
-
-.buy-button {
-  position: relative;
-}
 
 .product-description {
   position: relative;
@@ -104,4 +85,11 @@
 .read-more-link {
 
   text-decoration: none;
+}
+
+.list-decoration {
+  a {
+    text-decoration: none;
+  }
+  list-style: none;
 }

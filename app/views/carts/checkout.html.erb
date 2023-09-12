@@ -9,7 +9,7 @@
       <div class="product-details">
         <% subtotal = 0.0 %>
         <div class="row">
-          <div class="col-4">
+          <div class="col-4 ps-3">
             <strong>Product Name</strong>
           </div>
           <div class="col-2 d-flex justify-content-start">
@@ -18,7 +18,7 @@
           <div class="col-3 d-flex justify-content-end">
             <strong>Price</strong>
           </div>
-          <div class="col-3 d-flex justify-content-end">
+          <div class="col-3 d-flex justify-content-end pe-3">
             <strong>Subtotal</strong>
           </div>
         </div>
@@ -26,8 +26,8 @@
 
       <% @cart_items.each do |item| %>
         <div class="row">
-          <div class="col-4">
-            <%= item.product.name %>
+          <div class="col-4 ps-5">
+            <li><%= item.product.name %></li>
           </div>
           <div class="col-2 d-flex justify-content-end">
             <%= item.quantity %>
@@ -35,7 +35,7 @@
           <div class="col-3 d-flex justify-content-end">
             <%= humanized_money_with_symbol(item.product.price) %>
           </div>
-          <div class="col-3 d-flex justify-content-end">
+          <div class="col-3 d-flex justify-content-end pe-3">
             <%= humanized_money_with_symbol(item.total * 100) %>
           </div>
         </div>
@@ -51,13 +51,15 @@
     </table>
   </div>
 
-  <div class="back-to-cart-button">
+
     <%# <%= link_to 'Finish order', new_order_payment_path(), class: 'btn btn-primary' %>
-    <%= form_tag orders_path do %>
+    <%= form_tag orders_path, class: "d-flex flex-column align-items-center" do %>
       <%= hidden_field_tag 'cart_id', @cart.id %>
-      <%= submit_tag 'Go to payment', class:"btn btn-primary" %>
+
+      <%= submit_tag 'Finish Order', class:"btn btn-primary w-300" %>
+
     <% end %>
-  </div>
+
 </div>
 
   <div class="back-to-cart-button">
