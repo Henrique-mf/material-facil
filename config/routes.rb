@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'home/index'
 
   devise_for :users
   root to: "pages#home"
   get 'profile', to: 'pages#profile'
+  # namespace :admin do
+  #   root to: "/admin"
+  # end
 
   resources :carts, only: %i[show] do
     member do
