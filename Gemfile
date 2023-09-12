@@ -98,3 +98,8 @@ gem 'pagy'
 # stripe
 gem 'money-rails'
 gem 'stripe'
+
+
+# rails admin
+gem "rails_admin", "3.0"
+gem "sassc-rails"

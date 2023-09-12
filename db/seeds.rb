@@ -20,7 +20,8 @@ user = User.create(
   first_name: Faker::Name.name,
   last_name: Faker::Name.last_name,
   phone: Faker::PhoneNumber.cell_phone,
-  address: Faker::Address.street_address
+  address: Faker::Address.street_address,
+  admin: true
 )
 
 3.times do
@@ -35,10 +36,10 @@ user = User.create(
 end
 
 scrape_data = [
-  { url: 'https://www.papersource.com/desk/writing-instruments/pens', category: 'Pens' }
-  # { url: 'https://www.papersource.com/craft/paper-bar/paper', category: 'Paper' },
-  # { url: 'https://www.papersource.com/craft/paper-bar/envelopes', category: 'Envelopes' },
-  # { url: 'https://www.papersource.com/craft/tools/tape' category: 'Tape' },
+  { url: 'https://www.papersource.com/desk/writing-instruments/pens', category: 'Pens' },
+  { url: 'https://www.papersource.com/craft/paper-bar/paper', category: 'Paper' },
+  { url: 'https://www.papersource.com/craft/paper-bar/envelopes', category: 'Envelopes' },
+  { url: 'https://www.papersource.com/craft/tools/tape', category: 'Tape' },
 ]
 
 scrape_data.each do |data|

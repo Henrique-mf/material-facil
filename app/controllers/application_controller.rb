@@ -24,4 +24,9 @@ class ApplicationController < ActionController::Base
       0
     end
   end
+
+  def after_sign_in_path_for(resource)
+    resource.admin? ? rails_admin_path : root_path
+
+  end
 end
