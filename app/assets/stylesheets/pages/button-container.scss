@@ -11,3 +11,11 @@
 .button-container::-webkit-scrollbar {
   width: 0; /* WebKit (Chrome, Safari, etc.) */
 }
+
+.button-container a {
+
+  &:hover,
+  &:focus {
+    color: #f0ad42;
+  }
+}

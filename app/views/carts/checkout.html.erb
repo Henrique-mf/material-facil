@@ -42,7 +42,7 @@
               <% subtotal += item.quantity * item.product.price.to_f %>
       <% end %>
 
-        <div class="row">
+      <div class="row">
           <div class="col-12 d-flex justify-content-end">
             <strong> <%= humanized_money_with_symbol(subtotal) %></strong>
           </div>
@@ -50,6 +50,16 @@
 
     </table>
   </div>
+
+  <div class="back-to-cart-button">
+    <%# <%= link_to 'Finish order', new_order_payment_path(), class: 'btn btn-primary' %>
+    <%= form_tag orders_path do %>
+      <%= hidden_field_tag 'cart_id', @cart.id %>
+      <%= submit_tag 'Finish order', class:"btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
   <div class="back-to-cart-button">
     <%= link_to 'Back to Cart', cart_path(@cart), class: 'btn btn-primary' %>
   </div>

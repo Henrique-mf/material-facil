@@ -1,46 +1,49 @@
+<!-- HTML structure -->
 <div class="button-container">
   <%= link_to "Schools", schools_path, class: "btn btn-info product" %>
-  <%# <%= link_to "Products", products_path, class: "btn btn-info categories" %>
+  <!-- <%= link_to "Products", products_path, class: "btn btn-info categories" %> -->
   <%= link_to "Categories", categories_path, class: "btn btn-info categories" %>
-  <%# top horizontal menu %>
+  <!-- Top horizontal menu -->
   <% @categories = Category.all %>
   <% @categories.each do |category| %>
-  <%= link_to category.name, category_path(category), class: "btn btn-info categories" %>
+    <%= link_to category.name, category_path(category), class: "btn btn-info categories" %>
   <% end %>
 </div>
+
 <%= render "shared/carrousel" %>
+
 <% @categories.each do |category| %>
-  <% unless category.name == "Pen" %>
-    <div class="sub-categories-name">
+  <div class="sub-categories-name">
     <%= link_to category.name, category_path(category) %>
-    </div>
+  </div>
+
+  <!-- Product Grid -->
+  <div class="product-grid">
     <% @products = category.products.limit(4) %>
     <% @products.each do |product| %>
-      <%# <div class="col-md-4 col-sm-6 col-xs-12"> %>
-        <!-- Product Card -->
-        <div class="card-product">
-          <!-- Product Image -->
-          <div class="product-image-container">
-            <% if product.photo.key? %>
-              <%= cl_image_tag product.photo.key, class: "product-image" %>
-            <% else %>
-              <%= image_tag "product_placeholder.png", class: "product-image" %>
-            <% end %>
-          </div>
-          <!-- Product Details -->
-          <div class="product-info">
-            <h2><%= product.name %></h2>
-            <!-- Truncated Description -->
-            <div class="product-description">
-              <%= product.description %>
-            </div>
-            <!-- Read More Link -->
-            <a href="#" class="read-more-link">Read More</a>
-            <h1> <%= humanized_money_with_symbol(product.price) %></h1>
-            <%= link_to "View Details", product_path(product), class: "btn btn-primary" %>
-          </div>
+      <!-- Product Card -->
+      <div class="product-card">
+        <!-- Product Image -->
+        <div class="product-image-container">
+          <% if product.photo.key? %>
+            <%= cl_image_tag product.photo.key, class: "product-image" %>
+          <% else %>
+            <%= image_tag "product_placeholder.png", class: "product-image" %>
+          <% end %>
         </div>
-      <%# </div> %>
+        <!-- Product Details -->
+        <div class="product-info">
+          <h2><%= product.name %></h2>
+          <!-- Truncated Description -->
+          <div class="product-description">
+            <%= product.description %>
+          </div>
+          <!-- Read More Link -->
+          <a href="#" class="read-more-link">Read More</a>
+          <h1> <%= humanized_money_with_symbol(product.price) %></h1>
+          <%= link_to "View Details", product_path(product), class: "btn btn-primary" %>
+        </div>
+      </div>
     <% end %>
-  <% end %>
+  </div>
 <% end %>

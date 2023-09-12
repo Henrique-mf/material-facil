@@ -30,7 +30,6 @@ class CartsController < ApplicationController
     redirect_to cart_path(cart), notice: "List successfully added"
   end
 
-
   def create
     @cart = Cart.new
     @cart.quantity = 1
@@ -56,6 +55,7 @@ class CartsController < ApplicationController
 
   def clear_cart
     @cart.cart_items.destroy_all
+    @cart.update(total_price: 0)
     redirect_to @cart, notice: "Cart successfully cleared"
   end
 

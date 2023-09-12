@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     collection do
       get 'new_index'
     end
+    resources :payments, only: :new
   end
 
   patch 'carts/add_list_to_cart/:list_id', to: 'carts#add_list_to_cart', as: :add_list_to_cart
