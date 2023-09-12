@@ -17,20 +17,27 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new
-    @order.user = current_user
-    current_user.carts.each do |cart|
-      ord_prod = OrderProduct.new(price: cart.product.price)
-      ord_prod.order = @order
-      ord_prod.product = cart.product
-      ord_prod.save
-      cart.destroy
-    end
-    current_user.carts.destroy_all
-    if @order.save
-      redirect_to @order
-    else
-      render :new, status: :unprocessable_entity
-    end
+    cart = Cart.find(params[:cart_id])
+    order = Order.create(cart: cart, amount_cents: cart.total_price, state: 'pending', user: current_user)
+
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: [{
+        price_data: {
+          unit_amount: order.amount_cents,
+          currency: 'usd',
+          product_data: {
+            name: "Order #{order.id}"
+          },
+        },
+        quantity: 1
+      }],
+      mode: 'payment',
+      success_url: order_url(order),
+      cancel_url: order_url(order)
+    )
+
+    order.update(checkout_session_id: session.id)
+    redirect_to new_order_payment_path(order)
   end
 end
