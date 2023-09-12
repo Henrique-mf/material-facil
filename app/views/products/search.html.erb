@@ -1,8 +1,12 @@
 <!-- app/views/products/search.html.erb -->
-<h1>"<%= @search_term %>" available options:</h1>
+<div class="sub-categories-title">
+  <h1><%= @search_term.capitalize %> available options</h1>
+</div>
 
-<ul>
-  <% @products.each do |product| %>
-    <li><%= link_to product.name, product_path(product) %></li>
-  <% end %>
-</ul>
+<div class="card-product">
+  <ul class="list-decoration">
+      <% @products.each do |product| %>
+      <li class="list-decoration">• <%= link_to product.name, product_path(product) %></li>
+    <% end %>
+  </ul>
+</div>
