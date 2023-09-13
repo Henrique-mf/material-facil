@@ -14,7 +14,9 @@ class Product < ApplicationRecord
     }
 
   belongs_to :category
-  has_many :orders
+  has_many :cart_items, dependent: :destroy
+  has_many :carts, through: :cart_items
+  has_many :ListProducts, dependent: :destroy
 
   validates :name, presence: true
   validates :description, presence: true
