@@ -10,6 +10,11 @@
   <% end %>
 </div>
 
+<div class="search-address-container btn btn-info">
+  <button id="select-address-button">Select delivery address</button>
+  <div id="delivery-address"></div>
+</div>
+
 <%= render "shared/carrousel" %>
 
 <% @categories.each do |category| %>
@@ -47,3 +52,38 @@
     <% end %>
   </div>
 <% end %>
+
+<!-- JS script for address search -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const selectAddressButton = document.getElementById('select-address-button');
+  const deliveryAddress = document.getElementById('delivery-address');
+
+  selectAddressButton.addEventListener('click', function () {
+    if (selectAddressButton.textContent === 'Select delivery address') {
+      // Display the input field for zip code.
+      selectAddressButton.textContent = 'Submit Zip Code';
+      deliveryAddress.innerHTML = '<input type="text" id="zip-code-input" placeholder="Enter Zip Code">';
+    } else {
+      // Handle zip code submission here.
+      const zipCodeInput = document.getElementById('zip-code-input');
+      const zipCode = zipCodeInput.value;
+
+      // Perform geocoding request and update button label with the delivery address.
+      fetch(`/geocode?zip_code=${zipCode}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.error) {
+            deliveryAddress.textContent = 'Error: ' + data.error;
+          } else {
+            deliveryAddress.textContent = 'Delivering to ' + data.address;
+            selectAddressButton.style.display = 'none'; // Hide the button after setting the address.
+          }
+        })
+        .catch(error => {
+          deliveryAddress.textContent = 'An error occurred: ' + error.message;
+        });
+    }
+  });
+});
+</script>
