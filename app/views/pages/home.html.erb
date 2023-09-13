@@ -11,11 +11,11 @@
 </div>
 
 <div class="search-address-container btn btn-info" data-controller="delivery-address">
-  <button data-delivery-address-target='button' data-action='click->delivery-address#open'>Select delivery address</button>
+  <button data-delivery-address-target='button' class='btn-delivery-address' data-action='click->delivery-address#open'>Select delivery address</button>
 
   <form data-delivery-address-target='form' data-action='submit->delivery-address#submit' class='d-none'>
     <input type="text" data-delivery-address-target='input' placeholder="Enter Zip Code">
-    <button type='submit'>Submit Zip Code</button>
+    <button type='submit' class='btn-delivery-address'>Submit Zip Code</button>
   </form>
   <div data-delivery-address-target="address"></div>
 </div>
@@ -24,8 +24,12 @@
 
 <% @categories.each do |category| %>
   <div class="sub-categories-name">
-    <%= link_to category.name, category_path(category) %>
+      <%= link_to category.name, category_path(category), class:'h2' %>
   </div>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/random/?<%= category.name %>);">
+</div>
+
 
   <!-- Product Grid -->
   <div class="product-grid">
@@ -43,14 +47,8 @@
         </div>
         <!-- Product Details -->
         <div class="product-info">
-          <h2><%= product.name %></h2>
-          <!-- Truncated Description -->
-          <div class="product-description">
-            <%= product.description %>
-          </div>
-          <!-- Read More Link -->
-          <a href="#" class="read-more-link">Read More</a>
-          <h1> <%= humanized_money_with_symbol(product.price) %></h1>
+          <h4><%= product.name %></h4>
+          <h3><i class="fa-solid fa-piggy-bank"></i> <%= humanized_money_with_symbol(product.price) %></h3>
           <%= link_to "View Details", product_path(product), class: "btn btn-primary" %>
         </div>
       </div>

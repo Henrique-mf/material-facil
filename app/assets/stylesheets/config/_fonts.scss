@@ -1,18 +1,8 @@
-/* Import Amazon Ember or a similar font */
-@import url('https://fonts.googleapis.com/css2?family=Amazon+Ember:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-/* Define fonts for body and headers */
-$body-font: 'Amazon Ember', sans-serif, "Helvetica", "sans-serif";
-$headers-font: 'Amazon Ember', sans-serif, "Helvetica", "sans-serif";
-
-/* Apply fonts to elements */
-body {
-    font-family: $body-font;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: $headers-font;
-}
+// Define fonts for body and headers
+$body-font: 'Roboto', sans-serif, "Helvetica", "sans-serif";
+$headers-font: 'Roboto', monospace, "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
