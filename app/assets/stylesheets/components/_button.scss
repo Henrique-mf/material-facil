@@ -1,23 +1,28 @@
 .btn-primary {
-  border-radius: 40px;
+  border-radius: 4px;
   margin-top: 10px;
   vertical-align: center;
+  align-items: center;
   text-decoration: none;
+
+  display: flex;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: bold;
   a {
-    color: black;
     text-decoration: none;
   }
 }
 
 .btn-primary-clearcart {
-  border-radius: 40px;
+  border-radius: 4px;
   margin-top: 10px;
   vertical-align: center;
   background-color: #d83f3f;
   color: white;
   font-weight: bold;
   a {
-    color: white;
+    color: #ffffff;
     text-decoration: none;
   }
 }
@@ -151,4 +156,10 @@
   a {
     width: 300px;
   }
+}
+
+.btn-delivery-address {
+  background-color: #71bec8;
+  color: #343434;
+  border: 1px solid #71bec8;
 }

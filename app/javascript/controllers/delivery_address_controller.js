@@ -23,7 +23,7 @@ export default class extends Controller {
           if (data.error) {
             this.addressTarget.innerText = 'Error: ' + data.error;
           } else {
-            this.addressTarget.innerText = 'Delivering to ' + data.address;
+            this.addressTarget.innerText =  'Delivering to ' + data.address;
             this.formTarget.classList.add('d-none');
           }
         })
