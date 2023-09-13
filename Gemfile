@@ -104,3 +104,6 @@ gem 'stripe_event'
 # rails admin
 gem "rails_admin", "3.0"
 gem "sassc-rails"
+
+# geocoding gem
+gem 'geocoder'
