@@ -4,17 +4,18 @@
     <%= link_to 'Checkout', checkout_cart_path(@cart), class: 'btn btn-primary' %>
   </div>
   <% @cart.cart_items.each do |cart_item| %>
-    <div class="card-product">
-      <%# <% if product.photo.key? %>
-        <%# <%= cl_image_tag product.photo.key, height: 300, width: 400, crop: :fill %>
-      <%# <% else %>
-        <%# <%= image_tag "placeholder.jpg", class: "product_image" %>
-      <%# <% end %>
+    <div class="card-product card-checkout">
+      <% if cart_item.product.photo.key? %>
+        <%= cl_image_tag cart_item.product.photo.key, height: 300, width: 400, crop: :fill %>
+      <% else %>
+        <%= image_tag "placeholder.jpg", class: "product_image" %>
+      <% end %>
       <div class="product-info">
         <h2><%= cart_item.product.name %></h2>
-        <h2><%= cart_item.product.description %></h2>
         <h1><%= humanized_money_with_symbol(cart_item.total * 100) %></h1>
+      </div>
 
+      <div class="add-remove button">
         <% if cart_item.quantity > 0 %>
           <%= link_to remove_quantity_cart_item_path(cart_item), data: {turbo_method: :patch}, class: "subtraction" do %>
             <i class="fa-solid fa-minus fa-lg"></i>
@@ -41,8 +42,8 @@
               <i class="fa-regular fa-trash-can fa-lg"></i>
           <% end %>
         <% end %>
-
       </div>
+
     </div>
   <% end %>
 
