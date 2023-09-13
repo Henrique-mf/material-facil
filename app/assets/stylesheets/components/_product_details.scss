@@ -3,6 +3,17 @@
   background-color: #fff;
 }
 
+.product-show-container {
+  display: flex;
+  flex-direction: column;
+  padding:0;
+  background-color: #fff;
+}
+
+.teste {
+  display: flex;
+}
+
 .product-container-checkout {
   padding-left:5px;
   background-color: #fff;
@@ -49,10 +60,10 @@
   text-decoration: none;
   margin-bottom: 0;
   background-color: #f5f5f5;
-  color: #343434;
+  color: #99cfd6;
   a {
     text-decoration: none;
-    color: #343434;
+    color: #49a1ad;
     font-weight: bold;
   }
 }
@@ -114,4 +125,8 @@
 .product, .categories {
   padding-top: 12px;
   padding-bottom: 0;
+}
+
+.school-info {
+  width: 150px;
 }

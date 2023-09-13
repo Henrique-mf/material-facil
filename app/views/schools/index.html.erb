@@ -10,11 +10,11 @@
         <!-- Product Card -->
           <div class="card-product">
             <!-- Product Image -->
-          <div class="product-image-container">
-              <%= image_tag("https://source.unsplash.com/random/?city,night",  class: "product_image float-left", alt: "City at night") %>
+          <div class="school-image-container">
+              <%= cl_image_tag school.photo.key,  class: "school_image float-left", alt: "City at night" %>
           </div>
           <!-- Product Details -->
-          <div class="product-info">
+          <div class="school-info">
             <h2><%= school.name %></h2>
             <%= link_to "View Details", school_path(school), class: "btn btn-primary" %>
           </div>
