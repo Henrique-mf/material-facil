@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
 
   def create
     cart = Cart.find(params[:cart_id])
-    order = Order.create(cart: cart, amount_cents: cart.total_price, state: 'pending', user: current_user)
+    order = Order.create!(cart: cart, amount_cents: cart.total_price, state: 'pending', user: current_user)
 
     # Build an array of line items with product names
     line_items = cart.cart_items.map do |cart_item|

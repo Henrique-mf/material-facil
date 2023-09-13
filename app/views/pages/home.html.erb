@@ -10,6 +10,16 @@
   <% end %>
 </div>
 
+<div class="search-address-container btn btn-info" data-controller="delivery-address">
+  <button data-delivery-address-target='button' data-action='click->delivery-address#open'>Select delivery address</button>
+
+  <form data-delivery-address-target='form' data-action='submit->delivery-address#submit' class='d-none'>
+    <input type="text" data-delivery-address-target='input' placeholder="Enter Zip Code">
+    <button type='submit'>Submit Zip Code</button>
+  </form>
+  <div data-delivery-address-target="address"></div>
+</div>
+
 <%= render "shared/carrousel" %>
 
 <% @categories.each do |category| %>

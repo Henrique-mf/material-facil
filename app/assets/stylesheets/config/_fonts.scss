@@ -1,10 +1,18 @@
-// Import Google fonts
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,200;0,400;1,200&family=Inconsolata:wght@300&family=Inter:wght@200&display=swap');
+/* Import Amazon Ember or a similar font */
+@import url('https://fonts.googleapis.com/css2?family=Amazon+Ember:wght@400;500&display=swap');
 
+/* Define fonts for body and headers */
+$body-font: 'Amazon Ember', sans-serif, "Helvetica", "sans-serif";
+$headers-font: 'Amazon Ember', sans-serif, "Helvetica", "sans-serif";
 
-// Define fonts for body and headers
-$body-font: 'Inter', sans-serif, "Helvetica", "sans-serif";
-$headers-font: 'Inconsolata', monospace, "Helvetica", "sans-serif";
+/* Apply fonts to elements */
+body {
+    font-family: $body-font;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $headers-font;
+}
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
