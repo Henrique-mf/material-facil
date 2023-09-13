@@ -1,5 +1,5 @@
 <div class="cards" data-controller="share" data-share-url-value="<%= product_url(@product) %>">
-  <div class="product-name">
+  <div class="sub-categories-description">
     <h1 data-share-target="title"><%= @product.name %></h1>
   </div>
   <div class="card-product">
@@ -21,8 +21,9 @@
   </div>
   <div class="product-button">
     <%= link_to "Add to cart", product_cart_items_path(@product), data: { turbo_method: :post }, class: "btn btn-primary add-button" %>
-    <%= link_to 'Buy now', buy_product_product_path(@product), data: { turbo_method: :post }, class: "btn btn-primary add-button" %>
+    <%= link_to 'Buy now', buy_product_product_path(@product), data: { turbo_method: :post }, class: "btn btn-primary buy-now-button" %>
     <br>
-    <button data-action="click->share#share" class="btn btn-primary add-button">Share</button>
+    <button data-action="click->share#share" class="btn btn-primary buy-now-button"><i class="fa-solid fa-arrow-up-from-bracket"></i>
+ Share</button>
   </div>
 </div>

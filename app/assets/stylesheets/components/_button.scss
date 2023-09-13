@@ -104,6 +104,18 @@
   }
 }
 
+.buy-now-button {
+  position: relative;
+  text-align: center;
+  align-content: center;
+  background-color: #99cfd6;
+  color: #343434;
+  border: 1px solid #99cfd6;
+
+  a {
+    width: 300px;
+  }
+}
 
 .add-button {
   position: relative;
