@@ -10,9 +10,14 @@
   <% end %>
 </div>
 
-<div class="search-address-container btn btn-info">
-  <button id="select-address-button">Select delivery address</button>
-  <div id="delivery-address"></div>
+<div class="search-address-container btn btn-info" data-controller="delivery-address">
+  <button data-delivery-address-target='button' data-action='click->delivery-address#open'>Select delivery address</button>
+
+  <form data-delivery-address-target='form' data-action='submit->delivery-address#submit' class='d-none'>
+    <input type="text" data-delivery-address-target='input' placeholder="Enter Zip Code">
+    <button type='submit'>Submit Zip Code</button>
+  </form>
+  <div data-delivery-address-target="address"></div>
 </div>
 
 <%= render "shared/carrousel" %>
@@ -52,38 +57,3 @@
     <% end %>
   </div>
 <% end %>
-
-<!-- JS script for address search -->
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const selectAddressButton = document.getElementById('select-address-button');
-  const deliveryAddress = document.getElementById('delivery-address');
-
-  selectAddressButton.addEventListener('click', function () {
-    if (selectAddressButton.textContent === 'Select delivery address') {
-      // Display the input field for zip code.
-      selectAddressButton.textContent = 'Submit Zip Code';
-      deliveryAddress.innerHTML = '<input type="text" id="zip-code-input" placeholder="Enter Zip Code">';
-    } else {
-      // Handle zip code submission here.
-      const zipCodeInput = document.getElementById('zip-code-input');
-      const zipCode = zipCodeInput.value;
-
-      // Perform geocoding request and update button label with the delivery address.
-      fetch(`/geocode?zip_code=${zipCode}`)
-        .then(response => response.json())
-        .then(data => {
-          if (data.error) {
-            deliveryAddress.textContent = 'Error: ' + data.error;
-          } else {
-            deliveryAddress.textContent = 'Delivering to ' + data.address;
-            selectAddressButton.style.display = 'none'; // Hide the button after setting the address.
-          }
-        })
-        .catch(error => {
-          deliveryAddress.textContent = 'An error occurred: ' + error.message;
-        });
-    }
-  });
-});
-</script>

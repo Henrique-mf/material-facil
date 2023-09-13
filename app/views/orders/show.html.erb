@@ -9,7 +9,6 @@
         <p><strong>Issued on: </strong> <%= @order.created_at.to_date %> </p>
         <p><strong>Amount paid:</strong> <%= humanized_money_with_symbol(@order.amount_cents / 100) %> </p>
         <p><strong>Expected delivery date:</strong> within 2 business days</p>
-        <p><strong>Products:</strong></p>
     </div>
   </div>
 </div>
