@@ -19,5 +19,23 @@
 
     <%= yield %>
     <%= render "shared/footer" %>
+
+    <% if controller_name.in?(%w(categories lists products schools)) && action_name.in?(%w(index show search)) %>
+
+    <div
+      data-controller="back-button"
+      data-action="click->back-button#goBack"
+      class="back-button"
+    >
+      <i class="fa-solid fa-angle-left"></i>
+    </div>
+
+  <% end %>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+
   </body>
 </html>
