@@ -41,8 +41,11 @@ scrape_data = [
   { url: 'https://www.papersource.com/craft/paper-bar/paper', category: 'Paper' },
   { url: 'https://www.papersource.com/craft/paper-bar/envelopes', category: 'Envelopes' },
   { url: 'https://www.papersource.com/craft/tools/tape', category: 'Tape' },
-  { url: 'https://www.papersource.com/stationery/print-at-home/cards', category: 'Cards' }
-
+  { url: 'https://www.papersource.com/stationery/print-at-home/cards', category: 'Cards' },
+  { url: 'https://www.papersource.com/craft/embellishments/stickers', category: 'Stickers' },
+  { url: 'https://www.papersource.com/desk/writing-instruments/markers', category: 'Markers' },
+  { url: 'https://www.papersource.com/desk/planners/academic-planners', category: 'Planners' }
+  # { url: 'https://www.papersource.com/search/go?ts=custom&w=eraser', category: 'Erasers' }
 ]
 
 scrape_data.each do |data|
@@ -86,11 +89,20 @@ scrape_data.each do |data|
   end
 end
 # Create schools
-5.times do
+
+school_names = [
+  "Hogwarts School of Witchcraft and Wizardry",
+  "Rydell High School",
+  "Xavier's School for Gifted Youngsters",
+  "Baxter University",
+  "Shermer High School"
+]
+
+5.times do |index|
 school = School.create!(
-    name: Faker::University.name
+  name: school_names[index]
   )
-  puts "School created: #{school.name}"
+puts "School created: #{school.name}"
 
   # Create grades for each school
   (1..12).each do |grade_number|
@@ -103,11 +115,11 @@ school = School.create!(
       grade: grade
     )
     Category.all.each do |category|
-      category.products.sample(rand(2..5)).each do |product|
+      category.products.sample(rand(1..3)).each do |product|
         ListProduct.create!(
           list: list,
           product: product,
-          quantity: rand(1..5)
+          quantity: rand(1..3)
         )
       end
     end
