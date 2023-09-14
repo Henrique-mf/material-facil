@@ -2,25 +2,23 @@
   <h1>Schools</h1>
 </div>
 
-<%# <div class="container"> %>
-  <div class="row">
-
-    <% @schools.each do |school| %>
+<div class="row">
+  <% @schools.each do |school| %>
     <% unsplash_query = school.name.gsub(' ', '?') %>
     <% unsplash_url = "https://source.unsplash.com/random/#{unsplash_query}" %>
-      <div class="col-m-4 col-sm-6 col-xs-12">
-        <!-- Product Card -->
-          <div class="card-product">
-            <!-- Product Image -->
-          <div class="school-image-container">
-              <%= cl_image_tag school.photo.key,  class: "school_image float-left", alt: "City at night" %>
-          </div>
-          <!-- Product Details -->
-          <div class="school-info">
-            <h2><%= school.name %></h2>
-            <%= link_to "View Details", school_path(school), class: "btn btn-primary" %>
-          </div>
+    <div class="col-m-4 col-sm-6 col-xs-12">
+      <!-- Product Card -->
+      <div class="card-product">
+        <!-- Product Image -->
+        <div class="school-image-container">
+          <%= image_tag unsplash_url, alt: "School Image", class: "school_image float-left" %>
+        </div>
+        <!-- Product Details -->
+        <div class="school-info">
+          <h2><%= school.name %></h2>
+          <%= link_to "View Details", school_path(school), class: "btn btn-primary" %>
+        </div>
       </div>
-    <% end %>
-  </div>
-<%# </div> %>
+    </div>
+  <% end %>
+</div>
