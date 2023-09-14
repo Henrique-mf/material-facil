@@ -90,6 +90,18 @@
 //   font-weight: bold;
 
 
+.product-show-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  text-align: center;
+
+  a {
+    width: 300px;
+  }
+}
+
 .product-button {
   position: relative;
   text-align: center;
@@ -100,11 +112,13 @@
 }
 
 .add-to-cart-school-button {
+  display: flex;
+  justify-content: center;
   position: relative;
   text-align: center;
-  align-content: center;
   margin-bottom: 10px;
   a {
+
     width: 300px;
   }
 }
@@ -123,9 +137,13 @@
 }
 
 .add-button {
+  display: flex;
+  justify-content: center;
   position: relative;
   text-align: center;
   align-content: center;
+  background-color: #f0ad42;
+  border: 1px solid #f0ad42;
   a {
     width: 300px;
   }

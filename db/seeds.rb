@@ -114,5 +114,4 @@ school = School.create!(
   end
 end
 
-
 puts 'seed succesfull'

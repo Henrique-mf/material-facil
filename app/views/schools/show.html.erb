@@ -1,4 +1,4 @@
-<div class="schools-name">
+<div class="sub-categories-title">
 <h1><%= @school.name %></h1>
 </div>
 
@@ -6,7 +6,7 @@
   <% @grades.each do |grade| %>
     <div class="card-product">
       <%= image_tag "placeholder.jpg", class: "product_image" %>
-      <div class="product-info">
+            <div class="product-info">
         <h2><%= grade.name %></h2>
           <%= link_to "View Details", list_path(grade.list), class: "btn btn-primary" %>
         </div>
