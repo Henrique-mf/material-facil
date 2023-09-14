@@ -6,6 +6,8 @@
   <div class="row">
 
     <% @schools.each do |school| %>
+    <% unsplash_query = school.name.gsub(' ', '?') %>
+    <% unsplash_url = "https://source.unsplash.com/random/#{unsplash_query}" %>
       <div class="col-m-4 col-sm-6 col-xs-12">
         <!-- Product Card -->
           <div class="card-product">
