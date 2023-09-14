@@ -98,9 +98,11 @@ school_names = [
   "Shermer High School"
 ]
 
+
 5.times do |index|
 school = School.create!(
-  name: school_names[index]
+  name: school_names[index],
+  photo: schol_images[index]
   )
 puts "School created: #{school.name}"
 

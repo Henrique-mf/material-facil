@@ -22,16 +22,12 @@
 
 <%= render "shared/carrousel" %>
 
-<% @categories.each do |category| %>
+<% @categories.each_with_index do |category, index| %>
   <div class="sub-categories-name">
-      <%= link_to category.name, category_path(category), class:'h2' %>
+    <%= link_to category.name, category_path(category), class:'h2' %>
   </div>
-
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/random/?<%= category.name %>);">
-</div>
-
-
-  <!-- Product Grid -->
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/random/?<%= category.name %>);">
+  </div>
   <div class="product-grid">
     <% @products = category.products.limit(4) %>
     <% @products.each do |product| %>
@@ -54,5 +50,7 @@
       </div>
     <% end %>
   </div>
-  <%= render "shared/carrousel_ads" %>
+  <% if (index + 1) % 2 == 0 %>
+    <%= render "shared/carrousel_ads" %>
+  <% end %>
 <% end %>

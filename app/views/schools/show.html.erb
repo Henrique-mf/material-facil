@@ -2,14 +2,29 @@
 <h1><%= @school.name %></h1>
 </div>
 
+<% grade_images = [
+  "1.png",
+  "2.png",
+  "3.png",
+  "4.png",
+  "5.png",
+  "6.png",
+  "7.png",
+  "8.png",
+  "9.png",
+  "10.png",
+  "11.png",
+  "12.png"
+] %>
+
 <div class="cards">
-  <% @grades.each do |grade| %>
-    <div class="card-product">
-      <%= image_tag "placeholder.jpg", class: "product_image" %>
-            <div class="product-info">
+  <% @grades.each_with_index do |grade, index| %>
+    <div id="grade-image"class="card-product">
+      <%= image_tag asset_path(grade_images[index]), class: "product_image" %>
+      <div class="product-info">
         <h2><%= grade.name %></h2>
-          <%= link_to "View Details", list_path(grade.list), class: "btn btn-primary" %>
-        </div>
+        <%= link_to "View Details", list_path(grade.list), class: "btn btn-primary" %>
       </div>
+    </div>
   <% end %>
 </div>

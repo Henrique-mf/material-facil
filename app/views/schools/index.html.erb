@@ -2,16 +2,25 @@
   <h1>Schools</h1>
 </div>
 
+<% school_images = [
+  "school7.webp",
+  "school8.webp",
+  "school9.jpg",
+  "school1.jpg",
+  "school6.jpg"
+] %>
+
 <div class="row">
   <% @schools.each do |school| %>
-    <% unsplash_query = school.name.gsub(' ', '?') %>
-    <% unsplash_url = "https://source.unsplash.com/random/#{unsplash_query}" %>
+    <% image_index = @schools.index(school) %>
+    <% image_filename = school_images[image_index] %>
+
     <div class="col-m-4 col-sm-6 col-xs-12">
       <!-- Product Card -->
       <div class="card-product">
         <!-- Product Image -->
         <div class="school-image-container">
-          <%= image_tag unsplash_url, alt: "School Image", class: "school_image float-left" %>
+          <%= image_tag asset_path(image_filename), alt: "School Image", class: "school_image float-left" %>
         </div>
         <!-- Product Details -->
         <div class="school-info">
