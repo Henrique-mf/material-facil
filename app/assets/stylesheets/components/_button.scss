@@ -181,3 +181,21 @@
   color: #343434;
   border: 1px solid #71bec8;
 }
+
+
+.back-button {
+  position: fixed;
+  top: 50%;
+  left: 12px;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0 8px;
+  // padding-bottom: 4px;
+  // padding-left: 4px;
+  // padding-right: 4px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: white;
+  font-size: 20px;
+  scale: 1.3;
+}
