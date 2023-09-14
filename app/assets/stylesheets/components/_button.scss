@@ -60,7 +60,9 @@
   display: flex;
   position: relative;
   text-align: center;
-  align-content: center;
+  // align-content: center;
+  justify-content: center;
+  margin-left: 56px;
   display: inline-block;
   padding-bottom: 8px;
   a {
@@ -97,6 +99,7 @@
   align-items: center;
   position: relative;
   text-align: center;
+  margin-bottom: 20px;
 
   a {
     width: 300px;

@@ -56,7 +56,7 @@
     <%= form_tag orders_path, class: "d-flex flex-column align-items-center" do %>
       <%= hidden_field_tag 'cart_id', @cart.id %>
 
-      <%= submit_tag 'Finish Order', class:"btn btn-primary w-300" %>
+      <%= submit_tag 'Finish Order', class:"btn btn-primary w-300 add-button" %>
 
     <% end %>
 
