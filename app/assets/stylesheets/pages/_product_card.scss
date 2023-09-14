@@ -43,7 +43,11 @@
 }
 
 /* Product image styles */
-// .product-image-container {
+.product-image-container-category {
+  img {
+    width: 300px;
+  }
+}
 // }
 
 .product-image-container {
@@ -56,9 +60,7 @@
     }
 }
 
-/* Truncated description */
-.product-description {
-  max-height: 80px; /* Limit the height of the description */
-  overflow: hidden;
-  text-overflow: ellipsis;
+.card-info-grid {
+  display: flex;
+  justify-content: center;
 }
