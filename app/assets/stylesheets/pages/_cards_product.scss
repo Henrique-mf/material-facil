@@ -121,21 +121,26 @@
   }
 }
 
-.card-checkout {
-  display: flex;
-  align-content: end;
-}
+// .card-checkout {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: flex-end;
+// }
 
-.card-product .card-checkout {
-  display: flex;
+.card-checkout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
   // justify-content: space-between;
   // position: relative;
 }
 
 .add-remove-button {
-  position: absolute;
-  bottom: 18px;
-  right: 18px;
+  // position: fixed;
+  // padding-bottom: 18px;
+  // padding-right: 18px;
+  // width: 120px;
+  align-self: end;
+  justify-self: end;
 }
 
 // categories card product
