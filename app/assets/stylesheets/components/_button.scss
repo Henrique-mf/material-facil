@@ -153,6 +153,19 @@
   }
 }
 
+.pay-button {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  align-content: center;
+  background-color: green;
+  border: 1px solid green;
+  a {
+    width: 300px;
+  }
+}
+
 .buy-button {
   position: relative;
 }
