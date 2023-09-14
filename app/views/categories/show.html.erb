@@ -2,38 +2,30 @@
   <h1><%= @category.name %></h1>
 </div>
 
-<%# <div class="container"> %>
-  <div class="row">
-    <% @products.each do |product| %>
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <!-- Product Card -->
-        <div class="card-product">
-          <!-- Product Image -->
-          <div class="product-image-container">
+<div class="row">
+  <% @products.each do |product| %>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="card-product-category">
+        <div class="product-image-container-category">
+          <div class="product-info">
+            <h1><%= product.name %></h1>
+          <div class="product-description">
+          <div class="card-info-grid">
             <% if product.photo.key? %>
               <%= cl_image_tag product.photo.key, class: "product-image" %>
             <% else %>
               <%= image_tag "product_placeholder.png", class: "product-image" %>
             <% end %>
           </div>
-          <!-- Product Details -->
-          <div class="product-info">
-            <h2><%= product.name %></h2>
-            <!-- Truncated Description -->
-            <div class="product-description">
-              <%= product.description %>
-            </div>
-            <!-- Read More Link -->
-            <a href="#" class="read-more-link">Read More</a>
-            <h1><%= humanized_money_with_symbol(product.price) %></h1>
-
-            <%= link_to "View Details", product_path(product), class: "btn btn-primary" %>
+            <%= product.description %>
           </div>
         </div>
+          </div>
+      <%= link_to "View Details", product_path(product), class: "btn btn-primary" %>
       </div>
-    <% end %>
-  </div>
-<%# </div> %>
+    </div>
+  <% end %>
+</div>
 <div class="d-flex justify-content-center">
   <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
 </div>
