@@ -34,15 +34,18 @@
       </ul>
   </div>
 </div>
-<div class="search-bar">
-  <%= form_with url: search_products_path, method: :get, class: "d-flex" do %>
-    <%= text_field_tag :search_term,
-          params[:search_term],
-          class: "form-control",
-          placeholder: "Search for products..."
-    %>
-    <%= button_tag(type: 'submit', class: 'btn-search') do %>
-      <i class="fas fa-search" style="color: #343434;"></i>
+
+<% unless current_page?(privacy_path) || current_page?(profile_path) || current_page?(edit_user_registration_path) || current_page?(new_user_session_path) || current_page?(new_user_registration_path) || current_page?(new_user_password_path) || current_page?(new_order_payment_path) %>
+  <div class="search-bar">
+    <%= form_with url: search_products_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :search_term,
+            params[:search_term],
+            class: "form-control",
+            placeholder: "Search for products..."
+      %>
+      <%= button_tag(type: 'submit', class: 'btn-search') do %>
+        <i class="fas fa-search" style="color: #343434;"></i>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>

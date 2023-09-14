@@ -1,4 +1,6 @@
 class GeocodeController < ApplicationController
+  skip_before_action :authenticate_user!
+
   def lookup
     zip_code = params[:zip_code]
 
