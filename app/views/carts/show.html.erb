@@ -11,7 +11,7 @@
         <% else %>
           <%= image_tag "placeholder.jpg", class: "product_image" %>
         <% end %>
-        <div class="product-info">
+        <div class="product-info ps-3">
           <h2><%= cart_item.product.name %></h2>
           <h1><%= humanized_money_with_symbol(cart_item.total * 100) %></h1>
         </div>
